@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Soothsayer</string>
+    <string name="logo1">Sooth</string>
+    <string name="logo2">sayer</string>
+    <string name="rasklad">Расклад на картах Таро</string>
+    <string name="yyy">Гороскоп</string>
+    <string name="log">Введите ваш знак зодиака:</string>
+    <string name="main_btn">Показать результат</string>
+    <string name="taro_description">Описание изображения Таро</string>
+    <string name="goroscope_description">Описание изображения Гороскопа</string>
+    <string name="matrix_description">Описание изображения Матрицы</string>
+    <string name="situation">Расклад на ситуацию</string>
+    <string name="day">Карта дня</string>
+    <string name="no_user_input">Пожалуйста, введите свой знак зодиака</string>
+
+
+</resources>

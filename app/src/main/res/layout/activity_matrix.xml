@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteX="1dp"
+    tools:layout_editor_absoluteY="1dp"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fon"
+        tools:context=".Matrix">
+
+        <ImageButton
+            android:id="@+id/GoBack2"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/fon"
+            android:contentDescription="@string/matrix_description"
+            android:onClick="GoBack3"
+            android:scaleType="centerInside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/exit3" />
+
+        <ImageButton
+            android:id="@+id/reset"
+            android:contentDescription="@string/matrix_description"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/reset"
+            android:background="@color/fon"
+            android:scaleType="fitStart"
+            android:onClick="reset"/>
+
+        <EditText
+            android:id="@+id/vvod"
+            android:layout_width="312dp"
+            android:layout_height="62dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="200dp"
+            android:backgroundTint="@color/black"
+            android:ems="15"
+            android:hint="ДД.ММ.ГГГГ"
+            android:inputType="text"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/knopka"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vvod"
+            android:layout_marginHorizontal="130sp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="50dp"
+            android:backgroundTint="@color/background"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/main_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vvod" />
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="390dp"
+            android:layout_height="217dp"
+            android:layout_marginTop="30dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/matrixImage"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/matrixImage"
+            app:layout_constraintTop_toBottomOf="@+id/matrixImage"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/matrixImage"
+            android:layout_width="387dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="128dp"
+            android:contentDescription="@string/matrix_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/matri"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/zonaTalant"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="190dp"
+            android:layout_marginTop="32dp"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/matrixImage"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/zonaMat"
+            android:layout_width="29dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="195dp"
+            android:layout_marginEnd="20dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="@+id/matrixImage"
+            app:layout_constraintTop_toTopOf="@+id/matrixImage"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/zonaPortret"
+            android:layout_width="23dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="195dp"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="@+id/matrixImage"
+            app:layout_constraintTop_toTopOf="@+id/matrixImage"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/zonaKarma"
+            android:layout_width="26dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="180dp"
+            android:layout_marginBottom="25dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
+            app:layout_constraintStart_toStartOf="@+id/matrixImage"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/zonaM1"
+            android:layout_width="26dp"
+            android:layout_height="23dp"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="80dp"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="@+id/matrixImage"
+            app:layout_constraintTop_toTopOf="@+id/matrixImage"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/zonaG1"
+            android:layout_width="30dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="65dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="@+id/matrixImage"
+            app:layout_constraintTop_toTopOf="@+id/matrixImage"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/zonaG2"
+            android:layout_width="24dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="65dp"
+            android:layout_marginBottom="75dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
+            app:layout_constraintStart_toStartOf="@+id/matrixImage"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/zonaM2"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="75dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
+            app:layout_constraintEnd_toEndOf="@+id/matrixImage"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/centralArcan"
+            android:layout_width="25dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="10dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
+            app:layout_constraintEnd_toEndOf="@+id/matrixImage"
+            app:layout_constraintStart_toStartOf="@+id/matrixImage"
+            app:layout_constraintTop_toTopOf="@+id/matrixImage"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/Talant1"
+            android:layout_width="18dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="185dp"
+            android:layout_marginTop="65dp"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="@+id/matrixImage"
+            app:layout_constraintTop_toTopOf="@+id/matrixImage"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/Talant2"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="185dp"
+            android:layout_marginTop="90dp"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="@+id/matrixImage"
+            app:layout_constraintTop_toTopOf="@+id/matrixImage"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/Karma2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="185dp"
+            android:layout_marginBottom="80dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
+            app:layout_constraintStart_toStartOf="@+id/matrixImage"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/Karma1"
+            android:layout_width="17dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="184dp"
+            android:layout_marginBottom="59dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
+            app:layout_constraintStart_toStartOf="@+id/matrixImage"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/Portret1"
+            android:layout_width="17dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="53dp"
+            android:layout_marginBottom="187dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
+            app:layout_constraintStart_toStartOf="@+id/matrixImage"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/Portret2"
+            android:layout_width="17dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="75dp"
+            android:layout_marginBottom="187dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
+            app:layout_constraintStart_toStartOf="@+id/matrixImage"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/Mat2"
+            android:layout_width="20dp"
+            android:layout_height="19dp"
+            android:layout_marginEnd="75dp"
+            android:layout_marginBottom="187dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
+            app:layout_constraintEnd_toEndOf="@+id/matrixImage"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/Mat1"
+            android:layout_width="19dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="55dp"
+            android:layout_marginBottom="187dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
+            app:layout_constraintEnd_toEndOf="@+id/matrixImage"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

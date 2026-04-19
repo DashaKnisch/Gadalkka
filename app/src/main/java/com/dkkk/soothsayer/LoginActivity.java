@@ -1,42 +1,26 @@
 package com.dkkk.soothsayer;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 /**
  * Активность для входа пользователя в приложение.
- * Позволяет ввести логин и пароль, проверить их корректность
- * и перейти на главный экран приложения.
+ * Использует LoginViewModel для обработки логики входа.
  */
 public class LoginActivity extends AppCompatActivity {
 
-    /** Поле для ввода логина пользователя */
-    EditText etLogin;
+    private EditText etLogin;
+    private EditText etPassword;
+    private Button btnLogin;
+    private Button btnRegister;
+    private LoginViewModel loginViewModel;
 
-    /** Поле для ввода пароля пользователя */
-    EditText etPassword;
-
-    /** Кнопка для выполнения входа */
-    Button btnLogin;
-
-    /** Кнопка для перехода к регистрации нового пользователя */
-    Button btnRegister;
-
-    /** Помощник для работы с базой данных пользователей */
-    DBHelper dbHelper;
-
-    /**
-     * Метод жизненного цикла Activity, вызывается при создании.
-     * Инициализирует элементы интерфейса и задает обработчики событий.
-     *
-     * @param savedInstanceState сохранённое состояние активности (если есть)
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,31 +31,32 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);
 
-        dbHelper = new DBHelper(this);
+        // Инициализация ViewModel
+        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+
+        // Подписка на результат входа
+        loginViewModel.getLoginSuccess().observe(this, success -> {
+            if (success) {
+                startActivity(new Intent(this, Homeactivity.class));
+                finish();
+            }
+        });
+
+        // Подписка на сообщения об ошибках
+        loginViewModel.getErrorMessage().observe(this, message -> {
+            if (message != null) {
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         // Обработчик нажатия на кнопку входа
         btnLogin.setOnClickListener(v -> {
             String login = etLogin.getText().toString();
             String password = etPassword.getText().toString();
-
-            // Проверка валидности логина и пароля через DBHelper
-            if (dbHelper.isValidUser(login, password)) {
-                // Сохранение логина в SharedPreferences для последующего использования
-                SharedPreferences preferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("username", login);
-                editor.apply();
-
-                // Переход на главный экран и завершение текущей активности
-                startActivity(new Intent(this, Homeactivity.class));
-                finish();
-            } else {
-                // Сообщение об ошибке при неверных данных
-                Toast.makeText(this, "Неверный логин или пароль", Toast.LENGTH_SHORT).show();
-            }
+            loginViewModel.login(login, password);
         });
 
-        // Обработчик нажатия на кнопку регистрации - переход на экран регистрации
+        // Обработчик нажатия на кнопку регистрации
         btnRegister.setOnClickListener(v ->
                 startActivity(new Intent(this, RegisterActivity.class))
         );

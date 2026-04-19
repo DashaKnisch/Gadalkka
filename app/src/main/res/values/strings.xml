@@ -1,4 +1,6 @@
 <resources>
+    <string name="zast1">Магия скоро начнется...</string>
+
     <string name="app_name">Soothsayer</string>
     <string name="logo1">Sooth</string>
     <string name="logo2">sayer</string>

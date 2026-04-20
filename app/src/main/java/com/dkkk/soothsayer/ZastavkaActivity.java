@@ -23,25 +23,21 @@ public class ZastavkaActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.zastavka);
 
-        // системные отступы
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.LogoV), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.ZLogo), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // подключаем элементы
-        star1 = findViewById(R.id.star1);
-        star2 = findViewById(R.id.star2);
-        star3 = findViewById(R.id.star3);
+        star1 = findViewById(R.id.Zstar1);
+        star2 = findViewById(R.id.Zstar2);
+        star3 = findViewById(R.id.Zstar3);
 
-        // стартовое состояние (на всякий случай)
         star2.setAlpha(0f);
         star3.setAlpha(0f);
 
         Handler handler = new Handler();
 
-        // ⭐ star2 через 1 секунду (плавно)
         handler.postDelayed(() -> {
             star1.setVisibility(View.VISIBLE);
             star1.animate()
@@ -50,7 +46,6 @@ public class ZastavkaActivity extends AppCompatActivity {
                     .start();
         }, 1000);
 
-        // ⭐ star2 через 1 секунду (плавно)
         handler.postDelayed(() -> {
             star2.setVisibility(View.VISIBLE);
             star2.animate()
@@ -59,7 +54,6 @@ public class ZastavkaActivity extends AppCompatActivity {
                     .start();
         }, 2000);
 
-        // ⭐ star3 через 2 секунды (плавно)
         handler.postDelayed(() -> {
             star3.setVisibility(View.VISIBLE);
             star3.animate()
@@ -68,7 +62,6 @@ public class ZastavkaActivity extends AppCompatActivity {
                     .start();
         }, 3000);
 
-        // 🚀 переход на Login через 3 секунды
         handler.postDelayed(() -> {
             Intent i = new Intent(ZastavkaActivity.this, LoginActivity.class);
             startActivity(i);

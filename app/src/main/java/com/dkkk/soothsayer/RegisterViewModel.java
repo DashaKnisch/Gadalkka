@@ -1,20 +1,21 @@
 package com.dkkk.soothsayer;
 
 import android.app.Application;
+import android.util.Patterns;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-/**
- * ViewModel для RegisterActivity.
- * Обрабатывает логику регистрации.
- */
 public class RegisterViewModel extends AndroidViewModel {
+
     private final UserRepository userRepository;
 
     private final MutableLiveData<Boolean> registerSuccess = new MutableLiveData<>();
     private final MutableLiveData<String> errorMessage = new MutableLiveData<>();
+
+    private final MutableLiveData<Boolean> formError = new MutableLiveData<>();
 
     public RegisterViewModel(@NonNull Application application) {
         super(application);
@@ -29,18 +30,45 @@ public class RegisterViewModel extends AndroidViewModel {
         return errorMessage;
     }
 
-    /**
-     * Выполняет попытку регистрации.
-     */
-    public void register(String login, String password) {
-        if (login.isEmpty() || password.isEmpty()) {
-            errorMessage.setValue("Введите данные");
+    public LiveData<Boolean> getFormError() {
+        return formError;
+    }
+
+    public void register(String login, String email, String password) {
+
+        boolean error = false;
+
+        if (login.isEmpty()) {
+            error = true;
+        }
+
+        if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            error = true;
+        }
+
+        if (password.isEmpty() || password.length() < 10) {
+            error = true;
+        }
+
+        if (error) {
+            formError.setValue(true);
+            errorMessage.setValue("Введите корректные данные");
             return;
         }
 
-        if (userRepository.register(login, password)) {
+        boolean success = userRepository.register(
+                login,
+                email,
+                password,
+                "01-01-2000",
+                "unknown"
+        );
+
+        if (success) {
+            formError.setValue(false);
             registerSuccess.setValue(true);
         } else {
+            formError.setValue(true);
             errorMessage.setValue("Пользователь уже существует");
         }
     }

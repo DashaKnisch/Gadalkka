@@ -2,12 +2,13 @@ package com.dkkk.soothsayer;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 
-/**
- * Репозиторий для работы с данными пользователей.
- * Обеспечивает абстракцию над базой данных и настройками.
- */
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class UserRepository {
+
     private final DBHelper dbHelper;
     private final SharedPreferences sharedPreferences;
 
@@ -16,46 +17,62 @@ public class UserRepository {
         sharedPreferences = context.getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
     }
 
-    /**
-     * Проверяет учетные данные пользователя.
-     */
     public boolean login(String login, String password) {
-        if (dbHelper.isValidUser(login, password)) {
-            saveUserLogin(login);
-            return true;
+
+        Cursor cursor = dbHelper.getUserByLoginOrEmail(login);
+
+        if (cursor.moveToFirst()) {
+            String storedPassword = cursor.getString(cursor.getColumnIndexOrThrow("password"));
+
+            String hashedInput = hashPassword(password);
+
+            if (storedPassword.equals(hashedInput)) {
+                saveUserLogin(login);
+                cursor.close();
+                return true;
+            }
         }
+
+        cursor.close();
         return false;
     }
 
-    /**
-     * Регистрирует нового пользователя.
-     */
-    public boolean register(String login, String password) {
-        return dbHelper.insertUser(login, password);
+    public boolean register(String username, String email, String password,
+                            String birthdate, String zodiac) {
+
+        String hashedPassword = hashPassword(password);
+
+        return dbHelper.insertUser(username, email, hashedPassword, birthdate, zodiac);
     }
 
-    /**
-     * Сохраняет логин текущего пользователя.
-     */
+    private String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hash = md.digest(password.getBytes());
+
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                hexString.append(String.format("%02x", b));
+            }
+
+            return hexString.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private void saveUserLogin(String login) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("username", login);
         editor.apply();
     }
 
-    /**
-     * Возвращает имя текущего пользователя.
-     */
     public String getUsername() {
         return sharedPreferences.getString("username", "Неизвестно");
     }
 
-    /**
-     * Очищает данные пользователя (выход из аккаунта).
-     */
     public void logout() {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear();
-        editor.apply();
+        sharedPreferences.edit().clear().apply();
     }
 }

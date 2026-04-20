@@ -1,5 +1,15 @@
 <resources>
     <string name="zast1">Магия скоро начнется...</string>
+    <string name="vxod1">Добро пожаловать в мистический мир!</string>
+    <string name="vxod2">Имя пользователя/почта</string>
+    <string name="vxod3">Пароль</string>
+    <string name="vxod4">Войти</string>
+    <string name="vxod5">Ещё нет аккаунта? Зарегистрируйтесь</string>
+    <string name="reg1">Заполните форму)</string>
+    <string name="reg2">Имя пользователя</string>
+    <string name="reg3">Почта</string>
+    <string name="reg4">Зарегистрироваться</string>
+    <string name="reg5">Вернуться назад</string>
 
     <string name="app_name">Soothsayer</string>
     <string name="logo1">Sooth</string>

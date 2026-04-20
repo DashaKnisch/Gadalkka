@@ -1,49 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="@color/background"
-    android:padding="24dp"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/fon">
+
+    <ImageView
+        android:id="@+id/LogoV"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/z_logo"
+        app:srcCompat="@drawable/z_logo" />
+
+    <TextView
+        android:id="@+id/VTitle"
+        android:layout_width="286dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="255dp"
+        android:fontFamily="@font/marckscriptregular"
+        android:text="@string/vxod1"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="30sp" />
 
     <EditText
-        android:id="@+id/etLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Логин"
+        android:id="@+id/VLogin"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="380dp"
+        android:backgroundTint="@color/white"
+        android:hint="@string/vxod2"
         android:inputType="textPersonName"
         android:textColor="@color/white"
-        android:textColorHint="@color/gor"
-        android:backgroundTint="@color/logo"
-        android:layout_marginBottom="16dp" />
+        android:textSize="18sp"
+        android:fontFamily="@font/jejumyeongjoregular"
+        android:textColorHint="@color/white" />
 
     <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Пароль"
+        android:id="@+id/VPassword"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="430dp"
+        android:backgroundTint="@color/white"
+        android:hint="@string/vxod3"
         android:inputType="textPassword"
         android:textColor="@color/white"
-        android:textColorHint="@color/gor"
-        android:backgroundTint="@color/logo"
-        android:layout_marginBottom="24dp" />
+        android:textSize="18sp"
+        android:fontFamily="@font/jejumyeongjoregular"
+        android:textColorHint="@color/white" />
 
-    <Button
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Войти"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/logo" />
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/vxod4"
+        android:textColor="@color/text"
+        android:textSize="28sp"
+        android:fontFamily="@font/marckscriptregular"
+        android:layout_marginTop="500dp"
+        android:backgroundTint="@color/lightviolet"
+        app:strokeColor="@color/white"
+        app:strokeWidth="2dp"/>
 
     <Button
         android:id="@+id/btnRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ещё нет аккаунта? Зарегистрируйтесь"
-        android:textColor="@color/logo1"
+        android:layout_width="402dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="550dp"
         android:background="@android:color/transparent"
-        android:layout_marginTop="16dp" />
-</LinearLayout>
+        android:fontFamily="@font/jejumyeongjoregular"
+        android:text="@string/vxod5"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+</FrameLayout>
+

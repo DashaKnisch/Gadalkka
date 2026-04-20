@@ -1,5 +1,8 @@
 package com.dkkk.soothsayer;
 
+import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -8,56 +11,105 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-/**
- * Активность регистрации нового пользователя.
- * Использует RegisterViewModel для обработки логики.
- */
+import com.google.android.material.button.MaterialButton;
+
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText etName;
-    private EditText etPassword;
-    private Button btnRegister;
-    private RegisterViewModel registerViewModel;
+    private EditText etLogin, etEmail, etPassword;
+    private MaterialButton btnRegister;
+    private Button btnBack;
+
+    private RegisterViewModel viewModel;
+
+    private final int errorColor = Color.parseColor("#4A1212");
+    private final int defaultTextColor = Color.WHITE;
+
+    private ColorStateList defaultTint;
+    private int defaultStrokeColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        etName = findViewById(R.id.etName);
-        etPassword = findViewById(R.id.etPassword);
-        btnRegister = findViewById(R.id.btnRegister);
+        etLogin = findViewById(R.id.RLogin);
+        etEmail = findViewById(R.id.RMail);
+        etPassword = findViewById(R.id.RPassword);
 
-        // Инициализация ViewModel
-        registerViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
+        btnRegister = findViewById(R.id.btnLogin);
+        btnBack = findViewById(R.id.btnBack);
 
-        // Подписка на результат регистрации
-        registerViewModel.getRegisterSuccess().observe(this, success -> {
+        viewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
+
+        defaultTint = etLogin.getBackgroundTintList();
+
+        defaultStrokeColor = btnRegister.getStrokeColor().getDefaultColor();
+
+        viewModel.getRegisterSuccess().observe(this, success -> {
             if (success) {
                 Toast.makeText(this, "Регистрация успешна", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
 
-        // Подписка на сообщения об ошибках
-        registerViewModel.getErrorMessage().observe(this, message -> {
-            if (message != null) {
-                Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        viewModel.getErrorMessage().observe(this, msg -> {
+            if (msg != null) {
+                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
             }
         });
 
-        // Обработчик нажатия кнопки регистрации
-        btnRegister.setOnClickListener(v -> {
-            String name = etName.getText().toString();
-            String password = etPassword.getText().toString();
-            registerViewModel.register(name, password);
+        viewModel.getFormError().observe(this, error -> {
+            setField(etLogin, error);
+            setField(etEmail, error);
+            setField(etPassword, error);
+            setButtonStroke(error);
         });
+
+        btnRegister.setOnClickListener(v -> {
+            viewModel.register(
+                    etLogin.getText().toString().trim(),
+                    etEmail.getText().toString().trim(),
+                    etPassword.getText().toString().trim()
+            );
+        });
+
+        btnBack.setOnClickListener(v -> {
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+        });
+
+        etLogin.setOnFocusChangeListener((v, f) -> { if (f) reset(etLogin); });
+        etEmail.setOnFocusChangeListener((v, f) -> { if (f) reset(etEmail); });
+        etPassword.setOnFocusChangeListener((v, f) -> { if (f) reset(etPassword); });
     }
 
-    /**
-     * Обработчик нажатия кнопки "Назад ко входу".
-     */
-    public void goToLogin(android.view.View view) {
-        finish();
+    private void setField(EditText et, Boolean error) {
+        if (error == null) return;
+
+        if (error) {
+            et.setBackgroundTintList(ColorStateList.valueOf(errorColor));
+            et.setTextColor(errorColor);
+            et.setHintTextColor(errorColor);
+        } else {
+            et.setBackgroundTintList(defaultTint);
+            et.setTextColor(defaultTextColor);
+            et.setHintTextColor(defaultTextColor);
+        }
+    }
+
+    private void setButtonStroke(Boolean error) {
+        if (error == null) return;
+
+        if (error) {
+            btnRegister.setStrokeColor(ColorStateList.valueOf(errorColor));
+        } else {
+            btnRegister.setStrokeColor(ColorStateList.valueOf(defaultStrokeColor));
+        }
+    }
+
+    private void reset(EditText et) {
+        et.setBackgroundTintList(defaultTint);
+        et.setTextColor(defaultTextColor);
+        et.setHintTextColor(defaultTextColor);
     }
 }

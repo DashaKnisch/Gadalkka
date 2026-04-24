@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <!-- Разрешение для работы с интернетом -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -16,21 +14,21 @@
         android:theme="@style/Theme.Soothsayer"
         tools:targetApi="31">
 
-        <!-- Экран входа -->
         <activity android:name=".LoginActivity" android:exported="false" />
 
-        <!-- Экран регистрации -->
         <activity android:name=".RegisterActivity" android:exported="false" />
 
-        <!-- Другие активности -->
         <activity android:name=".Test" android:exported="false" />
         <activity android:name=".Matrix" android:exported="false" />
         <activity android:name=".TaroActivity" android:exported="false" />
         <activity android:name=".Goroscope" android:exported="false" />
         <activity android:name=".Homeactivity" android:exported="false" />
-        <activity android:name=".ProfileActivity" android:exported="false" />
+        <activity android:name=".BallActivity" android:exported="false" />
+        <activity android:name=".CompatibilityActivity" android:exported="false" />
+        <activity android:name=".SolarActivity" android:exported="false" />
+        <activity android:name=".LibraryActivity" android:exported="false" />
+        <activity android:name=".ProfileActivity" android:exported="false"/>
 
-        <!-- Заставка: первая активность при запуске -->
         <activity
             android:name=".ZastavkaActivity"
             android:exported="true">
@@ -40,7 +38,6 @@
             </intent-filter>
         </activity>
 
-        <!-- Предзагруженные шрифты -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

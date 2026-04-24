@@ -5,11 +5,41 @@
     <string name="vxod3">Пароль</string>
     <string name="vxod4">Войти</string>
     <string name="vxod5">Ещё нет аккаунта? Зарегистрируйтесь</string>
+
     <string name="reg1">Заполните форму)</string>
     <string name="reg2">Имя пользователя</string>
     <string name="reg3">Почта</string>
     <string name="reg4">Зарегистрироваться</string>
     <string name="reg5">Вернуться назад</string>
+
+    <string name="gTaro1">Карты Таро</string>
+    <string name="gTaro2">Открой мир тайн с картами Таро и узнай, что приготовил для тебя сегодняшний день.</string>
+    <string name="gTaroB">Гадать</string>
+
+    <string name="gHoroscope1">Гороскоп</string>
+    <string name="gHoroscope2">Гороскоп подскажет, какие энергии влияют на вас сегодня и чего стоит ожидать.</string>
+    <string name="gHoroscope3">Посмотреть</string>
+
+    <string name="gMatrix1">Матрица Судьбы</string>
+    <string name="gMatrix2">Матрица судьбы раскроет скрытые закономерности вашей жизни и поможет лучше понять себя.</string>
+    <string name="gMatrix3">Рассчитать</string>
+
+    <string name="gTest">Тесты</string>
+    <string name="gTest2">Пройдите лёгкие тесты, чтобы лучше понять себя и раскрыть свои скрытые черты характера.</string>
+    <string name="gTest3">Начать</string>
+
+    <string name="gBall1">Магический шар</string>
+    <string name="gBall2">Задайте вопрос, и магический шар ответит вам простым да или нет.</string>
+    <string name="gBall3">Получить ответ</string>
+
+    <string name="gCompatibility1">Совместимость</string>
+    <string name="gCompatibility2">Расчёт покажет, насколько гармоничны ваши энергии с другим человеком.</string>
+    <string name="gCompatibility3">Сравнить</string>
+
+    <string name="gSolar1">Соляр</string>
+    <string name="gSolar2">Соляр покажет основные события и энергии вашего личного года с момента дня рождения.</string>
+    <string name="gSolar3">Посмотреть</string>
+
 
     <string name="app_name">Soothsayer</string>
     <string name="logo1">Sooth</string>

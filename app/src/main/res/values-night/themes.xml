@@ -8,7 +8,10 @@
         <item name="windowActionBar">false</item>
 
     </style>
-
+    <style name="NoRippleBottomNav" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemRippleColor">@android:color/transparent</item>
+        <item name="itemActiveIndicatorStyle">@null</item>
+    </style>
     <style name="Theme.Soothsayer" parent="Base.Theme.Soothsayer" />
 
 </resources>

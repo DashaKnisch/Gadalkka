@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/g_ic_home"
+        android:title="Главная"
+        android:orderInCategory="0"/>
+
+    <item
+        android:id="@+id/library"
+        android:icon="@drawable/g_ic_library"
+        android:title="Библиотека"
+        android:orderInCategory="1"/>
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/g_ic_profile"
+        android:title="Профиль"
+        android:orderInCategory="2"/>
+
+</menu>

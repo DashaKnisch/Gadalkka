@@ -14,23 +14,25 @@
         android:theme="@style/Theme.Soothsayer"
         tools:targetApi="31">
 
-        <activity android:name=".LoginActivity" android:exported="false" />
+        <activity android:name=".ui.LoginActivity" android:exported="false" />
 
-        <activity android:name=".RegisterActivity" android:exported="false" />
+        <activity android:name=".ui.RegisterActivity" android:exported="false" />
 
-        <activity android:name=".Test" android:exported="false" />
-        <activity android:name=".Matrix" android:exported="false" />
-        <activity android:name=".TaroActivity" android:exported="false" />
-        <activity android:name=".Goroscope" android:exported="false" />
-        <activity android:name=".Homeactivity" android:exported="false" />
-        <activity android:name=".BallActivity" android:exported="false" />
-        <activity android:name=".CompatibilityActivity" android:exported="false" />
-        <activity android:name=".SolarActivity" android:exported="false" />
-        <activity android:name=".LibraryActivity" android:exported="false" />
-        <activity android:name=".ProfileActivity" android:exported="false"/>
+        <activity android:name=".ui.Test" android:exported="false" />
+        <activity android:name=".ui.Matrix" android:exported="false" />
+        <activity android:name=".ui.TaroActivity" android:exported="false" />
+        <activity android:name=".ui.Goroscope" android:exported="false" />
+        <activity android:name=".ui.HomeActivity" android:exported="false" />
+        <activity android:name=".ui.BallActivity" android:exported="false" />
+        <activity android:name=".ui.CompatibilityActivity" android:exported="false" />
+        <activity android:name=".ui.SolarActivity" android:exported="false" />
+        <activity android:name=".ui.library.LibraryActivity" android:exported="false" />
+        <activity android:name=".ui.ProfileActivity" android:exported="false"/>
+        <activity android:name=".ui.library.ArticleActivity" android:exported="false" />
+        <activity android:name=".ui.library.FavoriteActivity" android:exported="false"/>
 
         <activity
-            android:name=".ZastavkaActivity"
+            android:name=".ui.ZastavkaActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

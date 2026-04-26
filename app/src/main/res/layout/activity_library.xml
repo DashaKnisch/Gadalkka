@@ -1,6 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/GBarT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/g_bartop" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/searchInput"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/l_ic_search"
+            android:fontFamily="@font/marckscriptregular"
+            android:hint="@string/lTitle"
+            android:padding="10dp"
+            android:paddingStart="40dp"
+            android:textColorHint="@color/text"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/btnFavorite"
+            android:layout_width="50dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/l_ic_favorite" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/LDiscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/marckscriptregular"
+        android:gravity="center"
+        android:text="@string/l1"
+        android:textColor="@color/blue"
+        android:textSize="26sp" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:clipToPadding="false" />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        style="@style/NoRippleBottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/fon"
+
+        app:itemBackground="@android:color/transparent"
+        app:itemIconSize="32dp"
+        app:itemIconTint="@color/nav_icon_selector"
+
+        app:itemTextColor="@color/nav_icon_selector"
+        app:menu="@menu/bottom_nav_menu" />
+
+</LinearLayout>

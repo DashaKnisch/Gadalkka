@@ -5,7 +5,7 @@
     android:id="@+id/Gorosc"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Goroscope"
+    tools:context=".ui.Goroscope"
     android:background="@color/fon">
 
     <TextView

@@ -1,4 +1,4 @@
-package com.dkkk.soothsayer.viewmodel;
+package com.dkkk.soothsayer.viewmodel.entrance;
 
 import android.app.Application;
 import android.util.Patterns;

@@ -8,7 +8,9 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dkkk.soothsayer.R;
+import com.dkkk.soothsayer.ui.horoscope.HoroscopeActivity;
 import com.dkkk.soothsayer.ui.library.LibraryActivity;
+import com.dkkk.soothsayer.ui.taro.TaroActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
@@ -91,7 +93,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(this, TaroActivity.class)));
 
         btnHoroscope.setOnClickListener(v ->
-                startActivity(new Intent(this, Goroscope.class)));
+                startActivity(new Intent(this, HoroscopeActivity.class)));
 
         btnMatrix.setOnClickListener(v ->
                 startActivity(new Intent(this, Matrix.class)));

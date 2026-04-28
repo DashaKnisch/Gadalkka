@@ -29,7 +29,7 @@ import java.util.List;
 public class ArticleDBHelper {
 
     /** Имя базы данных в assets и в системе */
-    private static final String DB_NAME = "database.db";
+    private static final String DB_NAME = "articlebd.db";
 
     /** Контекст приложения */
     private final Context context;

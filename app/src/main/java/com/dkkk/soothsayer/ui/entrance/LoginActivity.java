@@ -1,4 +1,4 @@
-package com.dkkk.soothsayer.ui;
+package com.dkkk.soothsayer.ui.entrance;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -12,7 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.dkkk.soothsayer.R;
-import com.dkkk.soothsayer.viewmodel.LoginViewModel;
+import com.dkkk.soothsayer.ui.HomeActivity;
+import com.dkkk.soothsayer.viewmodel.entrance.LoginViewModel;
 
 /**
  * Экран авторизации пользователя.

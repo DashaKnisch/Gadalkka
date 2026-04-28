@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/lightblue">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/f_bartop" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_back_blue"/>
+
+                <TextView
+                    android:id="@+id/cardTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Карта дня:"
+                    android:gravity="center"
+                    android:textSize="32sp"
+                    android:textColor="@color/darkblue"
+                    android:fontFamily="@font/marckscriptregular"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="74dp"
+                    android:layout_height="309dp"
+                    android:src="@drawable/c_stars_left" />
+
+                <ImageView
+                    android:id="@+id/imgCard"
+                    android:layout_width="220dp"
+                    android:layout_height="320dp"
+                    android:scaleType="fitCenter"/>
+
+                <ImageView
+                    android:layout_width="74dp"
+                    android:layout_height="309dp"
+                    android:src="@drawable/c_stars_right" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/resultBlock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/card1"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_card_disc"
+                    android:padding="5dp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+
+                <TextView
+                    android:id="@+id/txtDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_card_block"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/card2"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_card_disc"
+                    android:padding="5dp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+
+                <TextView
+                    android:id="@+id/txtAdvice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_card_block"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/card3"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_card_disc"
+                    android:padding="5dp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+
+                <TextView
+                    android:id="@+id/txtImportant"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_card_block"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        style="@style/NoRippleBottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        app:itemBackground="@android:color/transparent"
+        app:itemIconSize="32dp"
+        app:itemIconTint="@color/nav_icon_selector"
+        app:itemTextColor="@color/nav_icon_selector"
+        app:menu="@menu/bottom_nav_menu"/>
+
+</LinearLayout>

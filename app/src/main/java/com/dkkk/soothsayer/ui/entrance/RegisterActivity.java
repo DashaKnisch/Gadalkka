@@ -1,4 +1,4 @@
-package com.dkkk.soothsayer.ui;
+package com.dkkk.soothsayer.ui.entrance;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.dkkk.soothsayer.R;
-import com.dkkk.soothsayer.viewmodel.RegisterViewModel;
+import com.dkkk.soothsayer.viewmodel.entrance.RegisterViewModel;
 import com.google.android.material.button.MaterialButton;
 
 /**

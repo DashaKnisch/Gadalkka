@@ -46,6 +46,29 @@
     <string name="A1"> Статья.</string>
     <string name="A2"> Добавить в избранное</string>
 
+    <string name="taro1"> Гадание на Таро</string>
+    <string name="taro2"> Таро - это колода карт, используемая для гадания, самопознания и анализа жизненных процессов через символику и архетипы.</string>
+    <string name="tarok1"> Карта дня </string>
+    <string name="tarok2"> Иногда мы так заняты планами и списками дел, что забываем прислушаться к себе. Эта карта — короткий разговор с вашей интуицией.</string>
+    <string name="tarok3"> Вытянуть </string>
+    <string name="taror1"> Расклад </string>
+    <string name="taror2"> У вас есть вопрос, но нет ответа? Сделайте расклад. Карты не предсказывают — они показывают возможный путь.</string>
+    <string name="taror3"> Сделать расклад </string>
+
+    <string name="card1"> Описание: </string>
+    <string name="card2"> Совет карты: </string>
+    <string name="card3"> Важно! </string>
+
+    <string-array name="categories">
+        <item>LOVE</item>
+        <item>MONEY</item>
+        <item>CAREER</item>
+        <item>HEALTH</item>
+        <item>SPIRIT</item>
+    </string-array>
+
+    <string name="spread1"> Разложить карты </string>
+    <string name="spread2"> Рзультат: </string>
 
     <string name="app_name">Soothsayer</string>
     <string name="logo1">Sooth</string>

@@ -1,4 +1,4 @@
-package com.dkkk.soothsayer.viewmodel;
+package com.dkkk.soothsayer.viewmodel.taro;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -27,7 +27,7 @@ public class TaroViewModel extends ViewModel {
     };
 
     private final int[] dayImages = {
-            R.drawable.loovers, R.drawable.death, R.drawable.wheel, R.drawable.star, R.drawable.sun, R.drawable.hermit
+            R.drawable.card_lovers, R.drawable.card_death, R.drawable.card_wheel, R.drawable.card_star, R.drawable.card_sun, R.drawable.card_hermit
     };
 
     private final String[] dayTexts = {

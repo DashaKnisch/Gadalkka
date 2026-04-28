@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.dkkk.soothsayer.R;
+import com.dkkk.soothsayer.ui.entrance.LoginActivity;
 import com.dkkk.soothsayer.viewmodel.ProfileViewModel;
 
 /**

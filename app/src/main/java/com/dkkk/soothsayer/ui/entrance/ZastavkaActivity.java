@@ -1,4 +1,4 @@
-package com.dkkk.soothsayer.ui;
+package com.dkkk.soothsayer.ui.entrance;
 
 import android.content.Intent;
 import android.os.Bundle;

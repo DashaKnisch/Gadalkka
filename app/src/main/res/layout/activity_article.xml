@@ -13,7 +13,6 @@
         android:layout_gravity="center_horizontal"
         app:srcCompat="@drawable/g_bartop" />
 
-    <!-- Верхняя панель -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

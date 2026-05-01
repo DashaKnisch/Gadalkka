@@ -81,7 +81,6 @@ public class TaroActivity extends AppCompatActivity {
      */
     private void setupBottomNavigation() {
 
-        // убрать выделение вообще
         nav.getMenu().setGroupCheckable(0, true, false);
 
         for (int i = 0; i < nav.getMenu().size(); i++) {

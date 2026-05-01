@@ -10,13 +10,13 @@ import java.io.*;
  * - копирование базы данных из assets в внутреннюю память приложения
  * - первичную инициализацию SQLite базы
  *
- * Используется для работы с готовой (offline) базой taro.db,
+ * Используется для работы с готовой (offline) базой gadalkadb,
  * которая заранее создана в DBeaver или другом редакторе.
  */
 public class TarotDatabaseHelper {
 
     /** Имя файла базы данных */
-    private static final String DB_NAME = "taro.db";
+    private static final String DB_NAME = "gadalka.db";
 
     /**
      * Копирует базу данных из папки assets в внутреннее хранилище приложения.
@@ -26,7 +26,7 @@ public class TarotDatabaseHelper {
      * Алгоритм:
      * - проверка существования базы данных
      * - создание директории databases при необходимости
-     * - копирование файла taro.db из assets
+     * - копирование файла gadalka.db из assets
      *
      * @param context контекст приложения
      */

@@ -1,87 +1,143 @@
 package com.dkkk.soothsayer.viewmodel;
 
-import androidx.lifecycle.LiveData;
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-import java.util.Random;
+
+import com.dkkk.soothsayer.model.MatrixResult;
+import com.dkkk.soothsayer.repository.MatrixRepository;
 
 /**
- * ViewModel для Matrix Activity.
- * Содержит логику расчетов матрицы по дате.
+ * ViewModel для расчёта "Матрицы судьбы".
+ *
+ * Отвечает за:
+ * - обработку даты рождения
+ * - вычисление всех числовых значений матрицы
+ * - применение правила приведения чисел (до диапазона 1–22)
+ * - получение текстовых значений из базы данных через репозиторий
+ * - передачу результата в UI через LiveData
+ *
+ * Является центральным слоем бизнес-логики между UI и MatrixRepository.
  */
-public class MatrixViewModel extends ViewModel {
+public class MatrixViewModel extends AndroidViewModel {
 
-    private final String[] descriptions = {
-            "Состояние человека «в плюсе»:\n\nДвижение. Подобно Колеснице...",
-            "Состояние человека «в плюсе»:\n\nПроницательность...",
-            "Состояние человека «в плюсе»:\n\nАмбиции..."
-    };
+    /** Результат расчёта матрицы (наблюдаемый объект для UI) */
+    public MutableLiveData<MatrixResult> result = new MutableLiveData<>();
 
-    private final MutableLiveData<MatrixResult> matrixResult = new MutableLiveData<>();
-    private final Random random = new Random();
+    /** Репозиторий для получения текстов из базы данных */
+    private final MatrixRepository repo;
 
-    public LiveData<MatrixResult> getMatrixResult() {
-        return matrixResult;
+    /**
+     * Создание ViewModel.
+     *
+     * Инициализирует репозиторий для работы с БД.
+     *
+     * @param app контекст приложения
+     */
+    public MatrixViewModel(@NonNull Application app) {
+        super(app);
+        repo = new MatrixRepository(app);
     }
 
-    public void calculateMatrix(String input) {
-        if (!validateInput(input)) {
-            matrixResult.setValue(null);
+    /**
+     * Приведение числа к диапазону 1–22.
+     *
+     * Если число больше 22 — выполняется сложение цифр,
+     * пока результат не станет ≤ 22.
+     *
+     * @param num исходное число
+     * @return приведённое число (1–22)
+     */
+    private int reduce(int num) {
+
+        while (num > 22) {
+            int sum = 0;
+
+            while (num > 0) {
+                sum += num % 10;
+                num /= 10;
+            }
+
+            num = sum;
+        }
+
+        return num;
+    }
+
+    /**
+     * Основной метод расчёта матрицы.
+     *
+     * 1. Проверяет корректность даты
+     * 2. Вычисляет все позиции матрицы
+     * 3. Применяет формулу приведения (reduce)
+     * 4. Получает текстовые значения из базы
+     * 5. Возвращает результат в LiveData
+     *
+     * @param date дата рождения в формате dd.MM.yyyy
+     */
+    public void calculate(String date) {
+
+        if (date == null || date.trim().isEmpty()) return;
+        if (!date.contains(".")) return;
+
+        String[] parts = date.split("\\.");
+        if (parts.length != 3) return;
+
+        int day, month, year;
+
+        try {
+            day = Integer.parseInt(parts[0]);
+            month = Integer.parseInt(parts[1]);
+            year = Integer.parseInt(parts[2]);
+        } catch (Exception e) {
             return;
         }
 
-        String[] parts = input.split("\\.");
-        int day = Integer.parseInt(parts[0]);
-        int month = Integer.parseInt(parts[1]);
-        int year = Integer.parseInt(parts[2]);
+        if (day < 1 || day > 31) return;
+        if (month < 1 || month > 12) return;
+        if (year < 1900) return;
 
-        int central = calculateCentralArcan(day, month, year);
-        String randomText = descriptions[random.nextInt(descriptions.length)];
+        MatrixResult r = new MatrixResult();
 
-        matrixResult.setValue(new MatrixResult(
-                String.valueOf(day),
-                String.valueOf(month),
-                String.valueOf(year / 100),
-                String.valueOf(year % 100),
-                String.valueOf(central),
-                randomText
-        ));
-    }
+        r.p2 = reduce(day);
+        r.p9 = month;
+        r.p7 = reduce(year);
 
-    private boolean validateInput(String input) {
-        if (!input.matches("\\d{2}\\.\\d{2}\\.\\d{4}")) return false;
-        try {
-            String[] parts = input.split("\\.");
-            int d = Integer.parseInt(parts[0]);
-            int m = Integer.parseInt(parts[1]);
-            int y = Integer.parseInt(parts[2]);
-            return d >= 1 && d <= 31 && m >= 1 && m <= 12 && y >= 1900 && y <= 2100;
-        } catch (Exception e) {
-            return false;
-        }
-    }
+        r.p4 = reduce(r.p2 + r.p9 + r.p7);
+        r.p10 = reduce(r.p2 + r.p9 + r.p7 + r.p4);
 
-    private int calculateCentralArcan(int day, int month, int year) {
-        int sum = sumDigits(day) + sumDigits(month) + sumDigits(year);
-        while (sum > 22) sum = sumDigits(sum);
-        return sum;
-    }
+        r.p1 = reduce(r.p2 + r.p9);
+        r.p3 = reduce(r.p2 + r.p4);
+        r.p6 = reduce(r.p4 + r.p7);
+        r.p8 = reduce(r.p7 + r.p9);
 
-    private int sumDigits(int num) {
-        int s = 0;
-        while (num > 0) {
-            s += num % 10;
-            num /= 10;
-        }
-        return s;
-    }
+        r.p22 = reduce(r.p2 + r.p10);
+        r.p42 = reduce(r.p4 + r.p10);
+        r.p72 = reduce(r.p7 + r.p10);
+        r.p92 = reduce(r.p9 + r.p10);
 
-    public static class MatrixResult {
-        public final String m1, m2, g1, g2, central, description;
+        r.p21 = reduce(r.p2 + r.p22);
+        r.p41 = reduce(r.p4 + r.p42);
+        r.p71 = reduce(r.p7 + r.p72);
+        r.p91 = reduce(r.p9 + r.p92);
 
-        public MatrixResult(String m1, String m2, String g1, String g2, String central, String description) {
-            this.m1 = m1; this.m2 = m2; this.g1 = g1; this.g2 = g2;
-            this.central = central; this.description = description;
-        }
+        r.p52 = reduce(r.p42 + r.p72);
+        r.p51 = reduce(r.p52 + r.p42);
+        r.p53 = reduce(r.p52 + r.p72);
+
+        r.character = repo.getCharacter(r.p10);
+        r.parents = repo.getParents(r.p2);
+        r.talent = repo.getTalent(r.p9);
+        r.finance = repo.getFinance(r.p7);
+        r.earnings = repo.getEarnings(r.p53);
+        r.partner = repo.getPartner(r.p51);
+        r.tail = repo.getTail(r.p4);
+
+        r.spirit = repo.getSpirit(r.p1, r.p8);
+        r.money = repo.getMoney(r.p6, r.p3);
+
+        result.setValue(r);
     }
 }

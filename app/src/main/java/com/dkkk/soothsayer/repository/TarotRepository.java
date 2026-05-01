@@ -16,7 +16,7 @@ import java.util.Random;
 /**
  * Репозиторий для работы с картами Таро.
  *
- * Отвечает за доступ к данным SQLite базы taro.db и бизнес-логику:
+ * Отвечает за доступ к данным SQLite базы gadalka.db и бизнес-логику:
  * - получение "Карты дня"
  * - генерация случайного расклада (3 карты)
  * - выбор карт из базы данных
@@ -37,9 +37,6 @@ public class TarotRepository {
         this.context = context;
     }
 
-    // =========================
-    // КАРТА ДНЯ
-    // =========================
 
     /**
      * Возвращает "Карту дня".
@@ -76,9 +73,6 @@ public class TarotRepository {
         return getCardById(cardId);
     }
 
-    // =========================
-    // ПОЛУЧЕНИЕ КАРТЫ ПО ID
-    // =========================
 
     /**
      * Получает карту Таро по её ID из базы данных.
@@ -89,7 +83,7 @@ public class TarotRepository {
     private TarotCard getCardById(int id) {
 
         SQLiteDatabase db =
-                context.openOrCreateDatabase("taro.db", Context.MODE_PRIVATE, null);
+                context.openOrCreateDatabase("gadalka.db", Context.MODE_PRIVATE, null);
 
         Cursor cursor = db.rawQuery(
                 "SELECT * FROM tarot_cards WHERE id=?",
@@ -117,9 +111,6 @@ public class TarotRepository {
         return card;
     }
 
-    // =========================
-    // РАСКЛАД 3 КАРТЫ
-    // =========================
 
     /**
      * Возвращает случайный расклад из 3 карт по категории.
@@ -134,7 +125,7 @@ public class TarotRepository {
     public List<TarotCard> getRandomSpread(String category) {
 
         SQLiteDatabase db =
-                context.openOrCreateDatabase("taro.db", Context.MODE_PRIVATE, null);
+                context.openOrCreateDatabase("gadalka.db", Context.MODE_PRIVATE, null);
 
         List<TarotCard> list = new ArrayList<>();
 

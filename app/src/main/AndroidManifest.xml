@@ -25,8 +25,8 @@
         <activity android:name=".ui.taro.CardDayActivity" android:exported="false" />
         <activity android:name=".ui.taro.SpreadActivity" android:exported="false" />
         <activity android:name=".ui.Test" android:exported="false" />
-        <activity android:name=".ui.Matrix" android:exported="false" />
-        <activity android:name=".ui.horoscope.HoroscopeActivity" android:exported="false" />
+        <activity android:name=".ui.MatrixActivity" android:exported="false" />
+        <activity android:name=".ui.HoroscopeActivity" android:exported="false" />
         <activity
             android:name=".ui.entrance.ZastavkaActivity"
             android:exported="true">

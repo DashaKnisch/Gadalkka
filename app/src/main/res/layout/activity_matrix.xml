@@ -1,310 +1,633 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout_editor_absoluteX="1dp"
-    tools:layout_editor_absoluteY="1dp"
-    android:fillViewport="true">
+    android:orientation="vertical"
+    android:background="@color/white">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main"
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/fon"
-        tools:context=".ui.Matrix">
+        app:srcCompat="@drawable/f_bartop" />
 
-        <ImageButton
-            android:id="@+id/GoBack2"
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@color/fon"
-            android:contentDescription="@string/matrix_description"
-            android:onClick="GoBack3"
-            android:scaleType="centerInside"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/exit3" />
+    <ScrollView
+        android:id="@+id/mainScroll"
+        android:layout_width="match_parent"
+        android:layout_height="731dp"
+        android:fillViewport="true">
 
-        <ImageButton
-            android:id="@+id/reset"
-            android:contentDescription="@string/matrix_description"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/reset"
-            android:background="@color/fon"
-            android:scaleType="fitStart"
-            android:onClick="reset"/>
-
-        <EditText
-            android:id="@+id/vvod"
-            android:layout_width="312dp"
-            android:layout_height="62dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="200dp"
-            android:backgroundTint="@color/black"
-            android:ems="15"
-            android:hint="ДД.ММ.ГГГГ"
-            android:inputType="text"
-            android:textColorHint="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/knopka"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/vvod"
-            android:layout_marginHorizontal="130sp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="50dp"
-            android:backgroundTint="@color/background"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/main_btn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vvod" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/result"
-            android:layout_width="390dp"
-            android:layout_height="217dp"
-            android:layout_marginTop="30dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/matrixImage"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/matrixImage"
-            app:layout_constraintTop_toBottomOf="@+id/matrixImage"
-            android:visibility="gone"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-        <ImageView
-            android:id="@+id/matrixImage"
-            android:layout_width="387dp"
-            android:layout_height="400dp"
-            android:layout_marginTop="128dp"
-            android:contentDescription="@string/matrix_description"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/matri"
-            android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:fontFamily="@font/marckscriptregular"
+                    android:text="@string/matrix1"
+                    android:textColor="@color/darkblue"
+                    android:textSize="32sp" />
 
-        <TextView
-            android:id="@+id/zonaTalant"
-            android:layout_width="30dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="190dp"
-            android:layout_marginTop="32dp"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/matrixImage"
-            android:gravity="center"
-            android:visibility="gone"/>
+                <ImageView
+                    android:id="@+id/btnInfo"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_info" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/zonaMat"
-            android:layout_width="29dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="195dp"
-            android:layout_marginEnd="20dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="@+id/matrixImage"
-            app:layout_constraintTop_toTopOf="@+id/matrixImage"
-            android:gravity="center"
-            android:visibility="gone"/>
+            <TextView
+                android:id="@+id/txtTooltip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@drawable/bg_podskazka"
+                android:justificationMode="inter_word"
+                android:padding="10dp"
+                android:text="@string/matrix2"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/zonaPortret"
-            android:layout_width="23dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="195dp"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="@+id/matrixImage"
-            app:layout_constraintTop_toTopOf="@+id/matrixImage"
-            android:gravity="center"
-            android:visibility="gone"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/lightblue"
+                android:gravity="center"
+                android:padding="10dp">
 
-        <TextView
-            android:id="@+id/zonaKarma"
-            android:layout_width="26dp"
-            android:layout_height="22dp"
-            android:layout_marginStart="180dp"
-            android:layout_marginBottom="25dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
-            app:layout_constraintStart_toStartOf="@+id/matrixImage"
-            android:gravity="center"
-            android:visibility="gone"/>
+                <Spinner
+                    android:id="@+id/spinnerDay"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_matrix_spin"/>
 
-        <TextView
-            android:id="@+id/zonaM1"
-            android:layout_width="26dp"
-            android:layout_height="23dp"
-            android:layout_marginStart="65dp"
-            android:layout_marginTop="80dp"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="@+id/matrixImage"
-            app:layout_constraintTop_toTopOf="@+id/matrixImage"
-            android:gravity="center"
-            android:visibility="gone"/>
+                <Spinner
+                    android:id="@+id/spinnerMonth"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_matrix_spin"/>
 
-        <TextView
-            android:id="@+id/zonaG1"
-            android:layout_width="30dp"
-            android:layout_height="22dp"
-            android:layout_marginTop="80dp"
-            android:layout_marginEnd="65dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="@+id/matrixImage"
-            app:layout_constraintTop_toTopOf="@+id/matrixImage"
-            android:gravity="center"
-            android:visibility="gone"/>
+                <Spinner
+                    android:id="@+id/spinnerYear"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_matrix_spin"/>
 
-        <TextView
-            android:id="@+id/zonaG2"
-            android:layout_width="24dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="65dp"
-            android:layout_marginBottom="75dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
-            app:layout_constraintStart_toStartOf="@+id/matrixImage"
-            android:gravity="center"
-            android:visibility="gone"/>
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/zonaM2"
-            android:layout_width="23dp"
-            android:layout_height="23dp"
-            android:layout_marginEnd="70dp"
-            android:layout_marginBottom="75dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
-            app:layout_constraintEnd_toEndOf="@+id/matrixImage"
-            android:gravity="center"
-            android:visibility="gone"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMatrix"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/marckscriptregular"
+                android:text="@string/matrix4"
+                android:textColor="@color/darkblue"
+                android:textSize="24sp"
+                app:strokeColor="@color/sredniblue"
+                app:strokeWidth="2dp" />
 
-        <TextView
-            android:id="@+id/centralArcan"
-            android:layout_width="25dp"
-            android:layout_height="22dp"
-            android:layout_marginTop="10dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
-            app:layout_constraintEnd_toEndOf="@+id/matrixImage"
-            app:layout_constraintStart_toStartOf="@+id/matrixImage"
-            app:layout_constraintTop_toTopOf="@+id/matrixImage"
-            android:gravity="center"
-            android:visibility="gone"/>
+            <TextView
+                android:id="@+id/txtTitle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/lightblue"
+                android:fontFamily="@font/marckscriptregular"
+                android:text="@string/spread2"
+                android:textAlignment="center"
+                android:textColor="@color/darkblue"
+                android:textSize="28sp" />
 
-        <TextView
-            android:id="@+id/Talant1"
-            android:layout_width="18dp"
-            android:layout_height="17dp"
-            android:layout_marginStart="185dp"
-            android:layout_marginTop="65dp"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="@+id/matrixImage"
-            app:layout_constraintTop_toTopOf="@+id/matrixImage"
-            android:gravity="center"
-            android:visibility="gone"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
 
-        <TextView
-            android:id="@+id/Talant2"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="185dp"
-            android:layout_marginTop="90dp"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="@+id/matrixImage"
-            app:layout_constraintTop_toTopOf="@+id/matrixImage"
-            android:gravity="center"
-            android:visibility="gone"/>
+                <ImageView
+                    android:id="@+id/ivMatrixBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/m_background" />
 
-        <TextView
-            android:id="@+id/Karma2"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginStart="185dp"
-            android:layout_marginBottom="80dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
-            app:layout_constraintStart_toStartOf="@+id/matrixImage"
-            android:gravity="center"
-            android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/tvPosition1"
+                    android:layout_width="33dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="73dp"
+                    android:layout_marginTop="75dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/Karma1"
-            android:layout_width="17dp"
-            android:layout_height="14dp"
-            android:layout_marginStart="184dp"
-            android:layout_marginBottom="59dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
-            app:layout_constraintStart_toStartOf="@+id/matrixImage"
-            android:gravity="center"
-            />
+                <TextView
+                    android:id="@+id/tvPosition2"
+                    android:layout_width="33dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="180dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/Portret1"
-            android:layout_width="17dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="53dp"
-            android:layout_marginBottom="187dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
-            app:layout_constraintStart_toStartOf="@+id/matrixImage"
-            android:gravity="center"
-            android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/tvPosition21"
+                    android:layout_width="27dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="180dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/Portret2"
-            android:layout_width="17dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="75dp"
-            android:layout_marginBottom="187dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
-            app:layout_constraintStart_toStartOf="@+id/matrixImage"
-            android:gravity="center"
-            android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/tvPosition22"
+                    android:layout_width="25dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="77dp"
+                    android:layout_marginTop="183dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/Mat2"
-            android:layout_width="20dp"
-            android:layout_height="19dp"
-            android:layout_marginEnd="75dp"
-            android:layout_marginBottom="187dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
-            app:layout_constraintEnd_toEndOf="@+id/matrixImage"
-            android:gravity="center"
-            android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/tvPosition3"
+                    android:layout_width="33dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="73dp"
+                    android:layout_marginTop="286dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/Mat1"
-            android:layout_width="19dp"
-            android:layout_height="20dp"
-            android:layout_marginEnd="55dp"
-            android:layout_marginBottom="187dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/matrixImage"
-            app:layout_constraintEnd_toEndOf="@+id/matrixImage"
-            android:gravity="center"
-            android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/tvPosition4"
+                    android:layout_width="33dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="179dp"
+                    android:layout_marginTop="348dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/tvPosition41"
+                    android:layout_width="27dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="181dp"
+                    android:layout_marginTop="313dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
-</ScrollView>
+                <TextView
+                    android:id="@+id/tvPosition42"
+                    android:layout_width="26dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="181dp"
+                    android:layout_marginTop="290dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPosition51"
+                    android:layout_width="26dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="207dp"
+                    android:layout_marginTop="263dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPosition52"
+                    android:layout_width="26dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="234dp"
+                    android:layout_marginTop="237dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPosition53"
+                    android:layout_width="26dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="264dp"
+                    android:layout_marginTop="210dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPosition6"
+                    android:layout_width="33dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="283dp"
+                    android:layout_marginTop="286dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPosition7"
+                    android:layout_width="33dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="345dp"
+                    android:layout_marginTop="179dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPosition71"
+                    android:layout_width="27dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="313dp"
+                    android:layout_marginTop="180dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPosition72"
+                    android:layout_width="26dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="287dp"
+                    android:layout_marginTop="183dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPosition8"
+                    android:layout_width="33dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="284dp"
+                    android:layout_marginTop="75dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPosition9"
+                    android:layout_width="33dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="178dp"
+                    android:layout_marginTop="13dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPosition91"
+                    android:layout_width="27dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="181dp"
+                    android:layout_marginTop="50dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPosition92"
+                    android:layout_width="26dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="181dp"
+                    android:layout_marginTop="80dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPosition10"
+                    android:layout_width="33dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ivMatrixBackground"
+                    android:layout_alignTop="@id/ivMatrixBackground"
+                    android:layout_marginStart="180dp"
+                    android:layout_marginTop="180dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/darkblue"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/txtTitle3"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@color/lightblue"
+                android:textColor="@color/darkblue" />
+
+            <LinearLayout
+                android:id="@+id/resultBlock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/matrix_1"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_matrix_disc"
+                    android:padding="5dp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+
+                <TextView
+                    android:id="@+id/txtcharacter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/darkblue"
+                    android:background="@drawable/bg_matrix_block2"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/matrix_2"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_matrix_disc"
+                    android:padding="5dp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+
+                <TextView
+                    android:id="@+id/txtparents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/darkblue"
+                    android:background="@drawable/bg_matrix_block2"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/matrix_3"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_matrix_disc"
+                    android:padding="5dp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+
+                <TextView
+                    android:id="@+id/txttalent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/darkblue"
+                    android:background="@drawable/bg_matrix_block2"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/matrix_4"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_matrix_disc"
+                    android:padding="5dp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+
+                <TextView
+                    android:id="@+id/txtfinance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/darkblue"
+                    android:background="@drawable/bg_matrix_block2"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/matrix_5"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_matrix_disc"
+                    android:padding="5dp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+
+                <TextView
+                    android:id="@+id/txtearnings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/darkblue"
+                    android:background="@drawable/bg_matrix_block2"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/matrix_6"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_matrix_disc"
+                    android:padding="5dp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+
+                <TextView
+                    android:id="@+id/txtpartner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/darkblue"
+                    android:background="@drawable/bg_matrix_block2"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/matrix_7"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_matrix_disc"
+                    android:padding="5dp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+
+                <TextView
+                    android:id="@+id/txttail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/darkblue"
+                    android:background="@drawable/bg_matrix_block2"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/matrix_8"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_matrix_disc"
+                    android:padding="5dp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+
+                <TextView
+                    android:id="@+id/txtspirit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/darkblue"
+                    android:background="@drawable/bg_matrix_block2"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/matrix_9"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_matrix_disc"
+                    android:padding="5dp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+
+                <TextView
+                    android:id="@+id/txtmoney"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/darkblue"
+                    android:background="@drawable/bg_matrix_block2"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/jejumyeongjoregular"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        style="@style/NoRippleBottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        app:itemIconTint="@color/nav_icon_selector"
+        app:itemTextColor="@color/nav_icon_selector"
+        app:menu="@menu/bottom_nav_menu" />
+
+</LinearLayout>

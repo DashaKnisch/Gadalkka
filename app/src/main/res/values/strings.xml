@@ -60,15 +60,50 @@
     <string name="card3"> Важно! </string>
 
     <string-array name="categories">
-        <item>LOVE</item>
-        <item>MONEY</item>
-        <item>CAREER</item>
-        <item>HEALTH</item>
-        <item>SPIRIT</item>
+        <item>Любовь</item>
+        <item>Деньги</item>
+        <item>Карьера</item>
+        <item>Здоровье</item>
+        <item>Духовность</item>
     </string-array>
 
     <string name="spread1"> Разложить карты </string>
     <string name="spread2"> Рзультат: </string>
+
+    <string name="horoscope1"> Гороскоп </string>
+    <string name="horoscope2"> Выберите ваш знак зодиака: </string>
+    <string-array name="ZZ">
+        <item>Выберите знак зодиака</item>
+        <item>Овен</item>
+        <item>Телец</item>
+        <item>Близнецы</item>
+        <item>Рак</item>
+        <item>Лев</item>
+        <item>Дева</item>
+        <item>Весы</item>
+        <item>Скорпион</item>
+        <item>Стрелец</item>
+        <item>Козерог</item>
+        <item>Водолей</item>
+        <item>Рыбы</item>
+    </string-array>
+    <string name="horoscope3"> Твой день под влиянием звёзд </string>
+    <string name="horoscope4"> Послание </string>
+    <string name="horoscope5"> Совет дня </string>
+
+    <string name="matrix1"> Рассчет матрицы </string>
+    <string name="matrix2"> Матрица судьбы — нумерологическая система из 22 арканов. По дате рождения рассчитываются числа, каждое описывает ваши таланты, задачи и зоны роста. </string>
+    <string name="matrix3"> Введите дату рождения (ДД.ММ.ГГГГ) </string>
+    <string name="matrix4"> Рассчитать </string>
+    <string name="matrix_1"> Характер </string>
+    <string name="matrix_2"> Отношения с родителями </string>
+    <string name="matrix_3"> Талант </string>
+    <string name="matrix_4"> Финансы </string>
+    <string name="matrix_5"> Сфера заработка </string>
+    <string name="matrix_6"> Идеальный партнер </string>
+    <string name="matrix_7"> Кармический хвост </string>
+    <string name="matrix_8"> Духовная карма по роду </string>
+    <string name="matrix_9"> Материальная карма по роду </string>
 
     <string name="app_name">Soothsayer</string>
     <string name="logo1">Sooth</string>

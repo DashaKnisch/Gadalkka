@@ -1,126 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/lightblue">
 
     <ImageView
-        android:id="@+id/topDecor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/g_bartop" />
+        app:srcCompat="@drawable/f_bartop" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/marckscriptregular"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:text="Гороскоп"
-        android:textColor="@color/text"
-        android:textSize="30sp" />
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="16dp">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/mainScroll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardDay"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:layout_marginBottom="18dp"
-                app:cardBackgroundColor="@color/lightviolet"
-                app:cardCornerRadius="22dp"
-                app:cardElevation="6dp"
-                app:strokeColor="@color/text"
-                app:strokeWidth="2dp">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:padding="10dp">
 
                     <TextView
+                        android:id="@+id/txtTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@string/horoscope1"
+                        android:textSize="32sp"
+                        android:textColor="@color/darkblue"
                         android:fontFamily="@font/marckscriptregular"
-                        android:text="Карта дня"
-                        android:textColor="@color/text"
-                        android:textSize="34sp" />
+                        android:layout_marginEnd="6dp" />
+
+                    <TextView
+                        android:id="@+id/txtTitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/horoscope2"
+                        android:textSize="28sp"
+                        android:textColor="@color/sredniblue"
+                        android:gravity="center"
+                        android:fontFamily="@font/marckscriptregular"
+                        android:layout_marginEnd="6dp" />
+
+                    <Spinner
+                        android:id="@+id/spinnerZZ"
+                        android:layout_width="380dp"
+                        android:layout_height="47dp"
+                        android:layout_margin="16dp"
+                        android:background="@drawable/bg_spread_block" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtTitle2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:background="@color/darkblue"
+                    android:fontFamily="@font/marckscriptregular"
+                    android:text="@string/horoscope3"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="255dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="75dp"
+                        android:layout_height="255dp"
+                        android:src="@drawable/c_stars_left" />
+
+                    <ImageView
+                        android:id="@+id/imgzz"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:scaleType="fitCenter" />
+
+                    <ImageView
+                        android:layout_width="75dp"
+                        android:layout_height="255dp"
+                        android:src="@drawable/c_stars_right" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/resultBlock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:fontFamily="@font/jejumyeongjoregular"
-                        android:text="Узнай энергию сегодняшнего дня"
-                        android:textColor="@color/text"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardSpread"
-                android:layout_width="match_parent"
-                android:layout_height="170dp"
-                app:cardBackgroundColor="@color/fon"
-                app:cardCornerRadius="22dp"
-                app:cardElevation="6dp"
-                app:strokeColor="@color/text"
-                app:strokeWidth="2dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                        android:text="@string/horoscope4"
+                        android:textColor="@color/white"
+                        android:background="@drawable/bg_card_disc"
+                        android:padding="5dp"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/jejumyeongjoregular"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/txtDescription"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/marckscriptregular"
-                        android:text="Расклад"
-                        android:textColor="@color/text"
-                        android:textSize="34sp" />
+                        android:textColor="@color/white"
+                        android:background="@drawable/bg_card_block"
+                        android:textSize="18sp"
+                        android:padding="10dp"
+                        android:justificationMode="inter_word"
+                        android:fontFamily="@font/jejumyeongjoregular"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:fontFamily="@font/jejumyeongjoregular"
-                        android:text="Получи ответы на свои вопросы"
-                        android:textColor="@color/text"
-                        android:textSize="18sp" />
+                        android:text="@string/horoscope5"
+                        android:textColor="@color/white"
+                        android:background="@drawable/bg_card_disc"
+                        android:padding="5dp"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/jejumyeongjoregular"/>
+
+                    <TextView
+                        android:id="@+id/txtAdvice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:background="@drawable/bg_card_block"
+                        android:textSize="18sp"
+                        android:padding="10dp"
+                        android:justificationMode="inter_word"
+                        android:fontFamily="@font/jejumyeongjoregular"/>
+
                 </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
 
-            </com.google.android.material.card.MaterialCardView>
-
-        </LinearLayout>
-
-    </ScrollView>
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         style="@style/NoRippleBottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/fon"
-        app:itemBackground="@android:color/transparent"
-        app:itemIconSize="32dp"
+        android:background="@color/blue"
         app:itemIconTint="@color/nav_icon_selector"
         app:itemTextColor="@color/nav_icon_selector"
         app:menu="@menu/bottom_nav_menu" />

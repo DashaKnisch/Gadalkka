@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.dkkk.soothsayer.R;
 import com.dkkk.soothsayer.ui.library.LibraryActivity;
 import com.dkkk.soothsayer.ui.taro.TaroActivity;
+import com.dkkk.soothsayer.ui.tests.TestActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
@@ -98,7 +99,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(this, MatrixActivity.class)));
 
         btnTest.setOnClickListener(v ->
-                startActivity(new Intent(this, Test.class)));
+                startActivity(new Intent(this, TestActivity.class)));
 
         btnBall.setOnClickListener(v ->
                 startActivity(new Intent(this, BallActivity.class)));

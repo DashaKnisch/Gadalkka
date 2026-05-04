@@ -105,6 +105,19 @@
     <string name="matrix_8"> Духовная карма по роду </string>
     <string name="matrix_9"> Материальная карма по роду </string>
 
+    <string name="test_1"> Тестирование </string>
+    <string name="test_2"> Хочешь узнать о себе больше? Выбери любой тест, ответь на несколько вопросов и сможешь понять себя лучше! </string>
+    <string name="test_3"> Какая ты ведьма? </string>
+    <string name="test_4"> Этот тест поможет вам понять, к какому типу ведьм вы ближе по духу и характеру. Узнайте, какая магия откликается именно вам! </string>
+    <string name="test_5"> Пройти </string>
+    <string name="test_6"> Какой твой камень? </string>
+    <string name="test_7"> Пройдя этот тест, вы узнаете, какой природный камень станет вашим личным оберегом и талисманом. Откройте для себя то, что усилит ваши сильные стороны и принесёт удачу. </string>
+
+    <string name="w_1"> Какая ты ведьма? </string>
+    <string name="w_2"> Вперед </string>
+    <string name="w_3"> Назад </string>
+    <string name="w_4"> Пройти ещё раз </string>
+
     <string name="app_name">Soothsayer</string>
     <string name="logo1">Sooth</string>
     <string name="logo2">sayer</string>

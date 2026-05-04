@@ -1,9 +1,8 @@
-package com.dkkk.soothsayer.ui.taro;
+package com.dkkk.soothsayer.ui.tests;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,24 +13,25 @@ import com.dkkk.soothsayer.ui.library.LibraryActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
- * Activity раздела "Таро".
+ * Activity раздела "Тесты".
  *
  * Содержит:
- * 1. Блок "Карта дня"
- * 2. Блок "Расклад"
+ * 1. Блок "Какая ты ведьма"
+ * 2. Блок "Какой камень тебе подходит"
  *
  * Каждый блок состоит из текста и кнопки.
  *
  * Нижняя навигация присутствует, но не подсвечивает текущий экран,
  * так как он не является основным разделом.
  */
-public class TaroActivity extends AppCompatActivity {
+public class TestActivity extends AppCompatActivity {
 
-    /** Кнопка перехода к "Карте дня" */
-    private Button btnCardDay;
 
-    /** Кнопка перехода к "Раскладу" */
-    private Button btnSpread;
+    /** Кнопка перехода к тесту "Какая ты ведьма" */
+    private Button btnTestWitch;
+
+    /** Кнопка перехода к тесту "Какой камень тебе подходит" */
+    private Button btnTestStone;
 
     /** Нижняя навигация */
     private BottomNavigationView nav;
@@ -39,7 +39,7 @@ public class TaroActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_taro);
+        setContentView(R.layout.activity_test);
 
         initViews();
         setupClicks();
@@ -50,8 +50,8 @@ public class TaroActivity extends AppCompatActivity {
      * Инициализация UI элементов
      */
     private void initViews() {
-        btnCardDay = findViewById(R.id.btnCardDay);
-        btnSpread = findViewById(R.id.btnSpread);
+        btnTestWitch = findViewById(R.id.btnTestWitch);
+        btnTestStone = findViewById(R.id.btnTestStone);
         nav = findViewById(R.id.bottom_navigation);
     }
 
@@ -60,15 +60,17 @@ public class TaroActivity extends AppCompatActivity {
      */
     private void setupClicks() {
 
-        // Карта дня
-        btnCardDay.setOnClickListener(v -> {
-            Intent intent = new Intent(this, CardDayActivity.class);
+        btnTestWitch.setOnClickListener(v -> {
+            Intent intent = new Intent(this, TestRunActivity.class);
+            intent.putExtra("test_name", "witch");
+            intent.putExtra("test_title", "Какая ты ведьма?");
             startActivity(intent);
         });
 
-        // Расклад
-        btnSpread.setOnClickListener(v -> {
-            Intent intent = new Intent(this, SpreadActivity.class);
+        btnTestStone.setOnClickListener(v -> {
+            Intent intent = new Intent(this, TestRunActivity.class);
+            intent.putExtra("test_name", "stone");
+            intent.putExtra("test_title", "Какой камень тебе подходит?");
             startActivity(intent);
         });
     }

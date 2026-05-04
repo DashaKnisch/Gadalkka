@@ -22,58 +22,24 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
-/**
- * Activity экрана "Расклад Таро".
- *
- * Отвечает за:
- * - выбор категории расклада
- * - генерацию случайных карт
- * - отображение результата расклада
- * - показ/скрытие блока результата
- * - отображение подсказки пользователя
- *
- * Использует:
- * - SpreadViewModel для бизнес-логики
- * - LiveData для обновления UI
- */
 public class SpreadActivity extends AppCompatActivity {
 
-    /** Spinner выбора категории расклада */
     private Spinner spinnerCategory;
-
-    /** Кнопка запуска расклада */
     private Button btnSpread;
-
-    /** Текст результата расклада */
     private TextView txtResult;
 
-    /** Карты расклада */
     private ImageView card1, card2, card3;
+    private ImageView btnBack, btnInfo;
 
-    /** Кнопка назад */
-    private ImageView btnBack;
-
-    /** Кнопка информации (подсказка) */
-    private ImageView btnInfo;
-
-    /** Блок подсказки */
     private TextView txtTooltip;
-
-    /** Контейнер блока результата расклада */
     private View spreadContainer;
 
-    /** Нижняя навигация */
     private BottomNavigationView nav;
 
-    /** ViewModel расклада */
     private SpreadViewModel vm;
 
-    /** Флаг видимости подсказки */
     private boolean isTooltipVisible = false;
 
-    /**
-     * Инициализация Activity
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,13 +50,12 @@ public class SpreadActivity extends AppCompatActivity {
         setupViewModel();
         setupObservers();
         setupClicks();
-        setupBottomNav();
         setupTooltip();
+        setupBottomNavigation();
     }
 
-    /**
-     * Инициализация UI элементов
-     */
+    // ---------------- UI ----------------
+
     private void initViews() {
 
         spinnerCategory = findViewById(R.id.spinnerCategory);
@@ -114,9 +79,8 @@ public class SpreadActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> finish());
     }
 
-    /**
-     * Настройка Spinner категорий расклада
-     */
+    // ---------------- Spinner ----------------
+
     private void setupSpinner() {
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -129,28 +93,34 @@ public class SpreadActivity extends AppCompatActivity {
         spinnerCategory.setAdapter(adapter);
     }
 
-    /**
-     * Инициализация ViewModel
-     */
+    // ---------------- ViewModel ----------------
+
     private void setupViewModel() {
         vm = new ViewModelProvider(this).get(SpreadViewModel.class);
     }
 
-    /**
-     * Подписка на LiveData из ViewModel
-     */
     private void setupObservers() {
 
         vm.cards.observe(this, this::setCards);
 
-        vm.resultText.observe(this, result -> txtResult.setText(result));
+        vm.resultText.observe(this, result -> {
+            txtResult.setText(result);
+        });
     }
 
-    /**
-     * Установка карт в UI
-     *
-     * @param cards список карт расклада
-     */
+    // ---------------- Logic ----------------
+
+    private void setupClicks() {
+
+        btnSpread.setOnClickListener(v -> {
+
+            String category = spinnerCategory.getSelectedItem().toString();
+
+            spreadContainer.setVisibility(View.GONE);
+            vm.loadSpread(category);
+        });
+    }
+
     private void setCards(List<TarotCard> cards) {
 
         if (cards == null || cards.isEmpty()) return;
@@ -166,12 +136,6 @@ public class SpreadActivity extends AppCompatActivity {
         if (cards.size() > 2) setImage(card3, cards.get(2).getImageName());
     }
 
-    /**
-     * Установка изображения карты
-     *
-     * @param view ImageView карты
-     * @param imageName имя drawable ресурса
-     */
     private void setImage(ImageView view, String imageName) {
 
         int resId = getResources().getIdentifier(
@@ -183,46 +147,28 @@ public class SpreadActivity extends AppCompatActivity {
         view.setImageResource(resId);
     }
 
-    /**
-     * Обработка кликов UI
-     */
-    private void setupClicks() {
+    // ---------------- Tooltip ----------------
 
-        btnSpread.setOnClickListener(v -> {
-
-            String category = spinnerCategory.getSelectedItem().toString();
-
-            spreadContainer.setVisibility(View.GONE);
-
-            vm.loadSpread(category);
-        });
-    }
-
-    /**
-     * Настройка подсказки пользователя
-     */
     private void setupTooltip() {
 
         txtTooltip.setVisibility(View.GONE);
 
         btnInfo.setOnClickListener(v -> {
 
-            if (isTooltipVisible) {
-                txtTooltip.setVisibility(View.GONE);
-                isTooltipVisible = false;
-            } else {
-                txtTooltip.setVisibility(View.VISIBLE);
-                isTooltipVisible = true;
-            }
+            isTooltipVisible = !isTooltipVisible;
+            txtTooltip.setVisibility(isTooltipVisible ? View.VISIBLE : View.GONE);
         });
     }
 
-    /**
-     * Настройка нижней навигации
-     */
-    private void setupBottomNav() {
+    // ---------------- Bottom Navigation ----------------
 
-        nav.setSelectedItemId(0);
+    private void setupBottomNavigation() {
+
+        nav.getMenu().setGroupCheckable(0, true, false);
+
+        for (int i = 0; i < nav.getMenu().size(); i++) {
+            nav.getMenu().getItem(i).setChecked(false);
+        }
 
         nav.setOnItemSelectedListener(item -> {
 

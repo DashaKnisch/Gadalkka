@@ -1,113 +1,267 @@
 package com.dkkk.soothsayer.viewmodel;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
+import android.app.Application;
 
-import com.dkkk.soothsayer.R;
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.MutableLiveData;
+
+import com.dkkk.soothsayer.model.test.Answer;
+import com.dkkk.soothsayer.model.test.Question;
+import com.dkkk.soothsayer.model.test.TestResult;
+import com.dkkk.soothsayer.repository.TestRepository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
- * ViewModel для Test Activity.
+ * ViewModel для прохождения тестов.
+ *
+ * Управляет логикой тестирования: загрузкой вопросов, сохранением ответов,
+ * навигацией между вопросами и подсчётом результата.
+ *
+ * Используется в:
+ * - активности теста "Какая ты ведьма" (TestWitchActivity)
+ * - активности теста "Какой камень тебе подходит" (TestStoneActivity)
+ *
+ * Архитектура: MVVM (Model-View-ViewModel)
+ * Жизненный цикл: привязан к Activity, переживает повороты экрана
+ *
+ * @author Soothsayer Team
+ * @version 1.0
  */
-public class TestViewModel extends ViewModel {
+public class TestViewModel extends AndroidViewModel {
 
-    private final String[] questions = {
-            "Вопрос 1: Какое время суток ты предпочитаешь?",
-            "Вопрос 2: Какие магические атрибуты ты выберешь?",
-            "Вопрос 3: Какое животное ты выберешь?",
-            "Вопрос 4: Какую стихию ты выберешь?",
-            "Вопрос 5: Какое оружие ты выберешь?",
-            "Вопрос 6: Чего ты боишься?"
-    };
+    /**
+     * Текущий отображаемый вопрос
+     */
+    public MutableLiveData<Question> currentQuestion = new MutableLiveData<>();
 
-    private final String[][] answerOptions = {
-            {"Утро", "День", "Вечер", "Полдень", "Заря", "Ночь"},
-            {"Метла", "Зелья", "Магический шар", "Палочка", "Книга магии", "Карты Таро"},
-            {"Сова", "Собака", "Рыбка", "Феникс", "Белый кот", "Чёрный ворон"},
-            {"Воздух", "Земля", "Вода", "Огонь", "Магия света", "Магия тьмы"},
-            {"Лук", "Щит", "Копьё", "Меч", "Книга", "Не нуждаюсь"},
-            {"Высоты", "Заточения", "Предательства", "Одиночества", "Зла", "Ничего)"}
-    };
+    /**
+     * Список вариантов ответов для текущего вопроса
+     */
+    public MutableLiveData<List<Answer>> answers = new MutableLiveData<>();
 
-    private final Map<String, Integer> answerScores = new HashMap<>();
-    private int currentQuestionIndex = 0;
-    private int totalScore = 0;
+    /**
+     * Флаг отображения экрана с результатом (true = показывать результат)
+     */
+    public MutableLiveData<Boolean> showResult = new MutableLiveData<>(false);
 
-    private final MutableLiveData<QuestionState> questionState = new MutableLiveData<>();
-    private final MutableLiveData<ResultState> resultState = new MutableLiveData<>();
+    /**
+     * Результат теста (заголовок, описание, изображение)
+     */
+    public MutableLiveData<TestResult> result = new MutableLiveData<>();
 
-    public TestViewModel() {
-        initScores();
+    /**
+     * Флаг возможности перехода к следующему вопросу
+     * (true = ответ выбран, можно идти дальше)
+     */
+    public MutableLiveData<Boolean> canGoNext = new MutableLiveData<>(false);
+
+    /**
+     * Репозиторий для работы с базой данных
+     */
+    private TestRepository repo;
+
+    /**
+     * Название текущего теста ("witch" или "stone")
+     */
+    private String testName;
+
+    /**
+     * Список всех вопросов теста
+     */
+    private List<Question> questionList;
+
+    /**
+     * Карта выбранных ответов.
+     * Ключ = ID вопроса, значение = выбранный ответ.
+     * (важно: используется questionId, а не порядковый индекс)
+     */
+    private final Map<Integer, Answer> selectedAnswers = new HashMap<>();
+
+    /**
+     * Текущий индекс (позиция) в списке вопросов
+     */
+    private int index = 0;
+
+    /**
+     * Конструктор ViewModel.
+     *
+     * @param app экземпляр приложения
+     */
+    public TestViewModel(@NonNull Application app) {
+        super(app);
     }
 
-    private void initScores() {
-        String[] allAnswers = {"Утро", "Метла", "Сова", "Воздух", "Лук", "Высоты"};
-        for (String ans : allAnswers) answerScores.put(ans, 1);
-        // ... упрощено для примера, в реальности заполнить все
-        answerScores.put("Ночь", 6); answerScores.put("Карты Таро", 6);
-        answerScores.put("Чёрный ворон", 6); answerScores.put("Магия тьмы", 6);
-        answerScores.put("Не нуждаюсь", 6); answerScores.put("Ничего)", 6);
-        // Дозаполним остальные для корректности логики
-        String[] s2 = {"День", "Зелья", "Собака", "Земля", "Щит", "Заточения"};
-        for (String ans : s2) answerScores.put(ans, 2);
-        String[] s3 = {"Вечер", "Магический шар", "Рыбка", "Вода", "Копьё", "Предательства"};
-        for (String ans : s3) answerScores.put(ans, 3);
-        String[] s4 = {"Полдень", "Палочка", "Феникс", "Огонь", "Меч", "Одиночества"};
-        for (String ans : s4) answerScores.put(ans, 4);
-        String[] s5 = {"Заря", "Книга магии", "Белый кот", "Магия света", "Книга", "Зла"};
-        for (String ans : s5) answerScores.put(ans, 5);
+    /**
+     * Инициализация теста.
+     * Вызывается после создания ViewModel.
+     *
+     * @param testName название теста ("witch" или "stone")
+     */
+    public void init(String testName) {
+        this.testName = testName;
+        this.repo = new TestRepository(getApplication(), testName);
+
+        resetState();
+        loadQuestions();
     }
 
-    public LiveData<QuestionState> getQuestionState() { return questionState; }
-    public LiveData<ResultState> getResultState() { return resultState; }
-
-    public void startTest() {
-        currentQuestionIndex = 0;
-        totalScore = 0;
-        showNextQuestion();
+    /**
+     * Сброс состояния теста.
+     * Очищает выбранные ответы и сбрасывает индекс.
+     */
+    private void resetState() {
+        index = 0;
+        selectedAnswers.clear();
+        showResult.setValue(false);
     }
 
-    public void answer(String text) {
-        Integer score = answerScores.get(text);
-        if (score != null) totalScore += score;
-        currentQuestionIndex++;
-        if (currentQuestionIndex < questions.length) {
-            showNextQuestion();
+    /**
+     * Загрузка всех вопросов теста из репозитория.
+     */
+    private void loadQuestions() {
+        questionList = repo.getQuestions();
+
+        if (questionList == null || questionList.isEmpty()) return;
+
+        loadCurrent();
+    }
+
+    /**
+     * Загрузка текущего вопроса и его ответов.
+     * Обновляет LiveData для отображения в UI.
+     */
+    private void loadCurrent() {
+
+        Question q = questionList.get(index);
+
+        currentQuestion.setValue(q);
+        answers.setValue(repo.getAnswers(q.id));
+
+        // проверка по questionId (НЕ index)
+        canGoNext.setValue(selectedAnswers.containsKey(q.id));
+    }
+
+    /**
+     * Обработка выбора ответа пользователем.
+     *
+     * @param a выбранный вариант ответа
+     */
+    public void selectAnswer(Answer a) {
+
+        if (questionList == null || questionList.isEmpty()) return;
+
+        Question q = questionList.get(index);
+
+        selectedAnswers.put(q.id, a);
+
+        canGoNext.setValue(true);
+    }
+
+    /**
+     * Получение выбранного ответа для текущего вопроса.
+     *
+     * @return выбранный ответ или null, если ответ не выбран
+     */
+    public Answer getSelectedAnswer() {
+
+        if (questionList == null || questionList.isEmpty()) return null;
+
+        Question q = questionList.get(index);
+
+        return selectedAnswers.get(q.id);
+    }
+
+    /**
+     * Переход к следующему вопросу.
+     * Если вопрос последний — запускается подсчёт результата.
+     */
+    public void next() {
+
+        if (questionList == null || questionList.isEmpty()) return;
+
+        Question q = questionList.get(index);
+
+        if (!selectedAnswers.containsKey(q.id)) return;
+
+        if (index < questionList.size() - 1) {
+            index++;
+            loadCurrent();
         } else {
-            showResult();
+            calculateResult();
         }
     }
 
-    private void showNextQuestion() {
-        questionState.setValue(new QuestionState(questions[currentQuestionIndex], answerOptions[currentQuestionIndex]));
-    }
+    /**
+     * Возврат к предыдущему вопросу.
+     */
+    public void prev() {
 
-    private void showResult() {
-        int resIdx = totalScore <= 10 ? 0 : totalScore <= 15 ? 1 : totalScore <= 20 ? 2 : totalScore <= 25 ? 3 : totalScore <= 30 ? 4 : 5;
-        int img = 0; String txt = "";
-        switch (resIdx) {
-            case 0: img = R.drawable.vozdux; txt = "Ты - ведьма воздуха..."; break;
-            case 1: img = R.drawable.zemla; txt = "Ты - ведьма земли..."; break;
-            case 2: img = R.drawable.voda; txt = "Ты - ведьма воды..."; break;
-            case 3: img = R.drawable.ogon; txt = "Ты - ведьма огня..."; break;
-            case 4: img = R.drawable.svet; txt = "Ты - ведьма света..."; break;
-            case 5: img = R.drawable.tma; txt = "Ты - ведьма тьмы..."; break;
+        if (index > 0) {
+            index--;
+            loadCurrent();
         }
-        resultState.setValue(new ResultState(img, txt));
     }
 
-    public static class QuestionState {
-        public final String question;
-        public final String[] answers;
-        public QuestionState(String q, String[] a) { this.question = q; this.answers = a; }
+    /**
+     * Подсчёт результата теста.
+     *
+     * Алгоритм:
+     * 1. Считает, сколько раз встречался каждый type (score)
+     * 2. Находит type с максимальным количеством повторений
+     * 3. Загружает из БД результат с этим type
+     *
+     * При равном количестве победителей берётся первый найденный максимум.
+     */
+    private void calculateResult() {
+
+        Map<Integer, Integer> typeCount = new HashMap<>();
+
+        for (Answer a : selectedAnswers.values()) {
+
+            int type = a.score;
+
+            Integer count = typeCount.get(type);
+
+            if (count == null) {
+                count = 0;
+            }
+
+            typeCount.put(type, count + 1);
+        }
+
+        int bestType = -1;
+        int max = 0;
+
+        for (Map.Entry<Integer, Integer> e : typeCount.entrySet()) {
+            if (e.getValue() > max) {
+                max = e.getValue();
+                bestType = e.getKey();
+            }
+        }
+
+        result.setValue(repo.getResult(testName, bestType));
+        showResult.setValue(true);
     }
 
-    public static class ResultState {
-        public final int imageRes;
-        public final String description;
-        public ResultState(int i, String d) { this.imageRes = i; this.description = d; }
+    /**
+     * Перезапуск теста.
+     * Сбрасывает состояние и начинает сначала.
+     */
+    public void restart() {
+        resetState();
+        loadCurrent();
+    }
+
+    /**
+     * Проверка, является ли текущий вопрос первым.
+     *
+     * @return true если первый вопрос, false иначе
+     */
+    public boolean isFirst() {
+        return index == 0;
     }
 }

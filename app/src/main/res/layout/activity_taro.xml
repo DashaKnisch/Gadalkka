@@ -60,7 +60,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/marckscriptregular"
                     android:text="@string/tarok1"
-                    android:textColor="@color/text"
+                    android:textColor="@color/darkblue"
                     android:textSize="30sp" />
 
                 <TextView
@@ -78,10 +78,10 @@
                     android:layout_width="300dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center_horizontal"
-                    android:backgroundTint="@color/lightviolet"
+                    android:backgroundTint="@color/lightblue"
                     android:fontFamily="@font/marckscriptregular"
                     android:text="@string/tarok3"
-                    android:textColor="@color/text"
+                    android:textColor="@color/darkblue"
                     android:textSize="24sp"
                     app:strokeColor="@color/white"
                     app:strokeWidth="2dp" />
@@ -104,7 +104,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/marckscriptregular"
                     android:text="@string/taror1"
-                    android:textColor="@color/text"
+                    android:textColor="@color/darkblue"
                     android:textSize="30sp" />
 
                 <TextView
@@ -122,10 +122,10 @@
                     android:layout_width="300dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center_horizontal"
-                    android:backgroundTint="@color/lightviolet"
+                    android:backgroundTint="@color/lightblue"
                     android:fontFamily="@font/marckscriptregular"
                     android:text="@string/taror3"
-                    android:textColor="@color/text"
+                    android:textColor="@color/darkblue"
                     android:textSize="24sp"
                     app:strokeColor="@color/white"
                     app:strokeWidth="2dp" />

@@ -135,10 +135,12 @@ public class CardDayActivity extends AppCompatActivity {
         BottomNavigationView nav =
                 findViewById(R.id.bottom_navigation);
 
-        // Сброс выделения элемента меню
-        nav.setSelectedItemId(0);
+        nav.getMenu().setGroupCheckable(0, true, false);
 
-        // Обработка кликов по навигации
+        for (int i = 0; i < nav.getMenu().size(); i++) {
+            nav.getMenu().getItem(i).setChecked(false);
+        }
+
         nav.setOnItemSelectedListener(item -> {
 
             int id = item.getItemId();

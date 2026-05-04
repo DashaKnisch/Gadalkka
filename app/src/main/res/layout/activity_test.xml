@@ -1,152 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Test"
-    android:background="@color/fon">
-
-    <Button
-        android:id="@+id/answerButton6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/answerButton5"
-        app:layout_constraintTop_toBottomOf="@+id/answerButton5"
-        android:visibility="gone"
-        android:layout_marginStart="70dp"
-        android:layout_marginEnd="70dp"/>
-
-    <Button
-        android:id="@+id/answerButton5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginEnd="70dp"
-        app:layout_constraintEnd_toEndOf="@+id/answerButton4"
-        app:layout_constraintTop_toBottomOf="@+id/answerButton4"
-        android:visibility="gone"/>
-
-    <Button
-        android:id="@+id/answerButton4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginEnd="70dp"
-        app:layout_constraintEnd_toEndOf="@+id/answerButton3"
-        app:layout_constraintTop_toBottomOf="@+id/answerButton3"
-        android:visibility="gone"/>
-
-    <Button
-        android:id="@+id/answerButton3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginEnd="70dp"
-        app:layout_constraintEnd_toEndOf="@+id/answerButton2"
-        app:layout_constraintTop_toBottomOf="@+id/answerButton2"
-        android:visibility="gone"/>
-
-    <Button
-        android:id="@+id/answerButton2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginEnd="70dp"
-        app:layout_constraintEnd_toEndOf="@+id/answerButton1"
-        app:layout_constraintTop_toBottomOf="@+id/answerButton1"
-        android:visibility="gone"/>
-
-    <ImageButton
-        android:id="@+id/GoBack4"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="60dp"
-        android:background="@color/fon"
-        android:contentDescription="@string/matrix_description"
-        android:onClick="GoBack4"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/exit3" />
-
-    <Button
-        android:id="@+id/startButton"
-        android:layout_width="187dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginEnd="110dp"
-        android:text="Начать"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/resultImageView"
-        android:layout_width="244dp"
-        android:layout_height="309dp"
-        android:layout_marginStart="85dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="85dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/resultTextView"
-        android:layout_width="378dp"
-        android:layout_height="191dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginBottom="27dp"
-        app:layout_constraintBottom_toTopOf="@+id/GoBack4"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-
-    <Button
-        android:id="@+id/answerButton1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginEnd="70dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"/>
+        app:srcCompat="@drawable/f_bartop" />
 
     <TextView
-        android:id="@+id/questionTextView"
-        android:layout_width="302dp"
-        android:layout_height="113dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="50dp"
-        android:fontFamily="@font/montserrat_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/marckscriptregular"
         android:gravity="center"
-        android:textColor="@color/background"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/test_1"
+        android:textColor="@color/darkblue"
+        android:textSize="32sp" />
 
-    <ImageButton
-        android:id="@+id/reset"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="60dp"
-        android:background="@color/fon"
-        android:contentDescription="@string/matrix_description"
-        android:onClick="reset"
-        android:scaleType="fitStart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/reset" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/testLogo"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:src="@drawable/test_logo"/>
+
+        <FrameLayout
+            android:layout_width="270dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/testText"
+                android:layout_width="270dp"
+                android:layout_height="130dp"
+                android:src="@drawable/test_text" />
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="248dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="33dp"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/jejumyeongjoregular"
+                android:justificationMode="inter_word"
+                android:text="@string/test_2"
+                android:textColor="@color/darkblue"
+                android:textSize="16sp" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:padding="10dp">
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="240dp"
+               android:layout_marginBottom="20dp"
+               android:background="@drawable/t_fon"
+               android:orientation="vertical"
+               android:padding="10dp">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="25dp"
+                   android:layout_gravity="center"
+                   android:layout_marginTop="10dp"
+                   android:layout_weight="1"
+                   android:fontFamily="@font/marckscriptregular"
+                   android:text="@string/test_3"
+                   android:textColor="@color/darkblue"
+                   android:textSize="30sp" />
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="0dp"
+                   android:layout_weight="2"
+                   android:fontFamily="@font/jejumyeongjoregular"
+                   android:justificationMode="inter_word"
+                   android:text="@string/test_4"
+                   android:textColor="@color/white"
+                   android:textSize="18sp" />
+
+               <com.google.android.material.button.MaterialButton
+                   android:id="@+id/btnTestWitch"
+                   android:layout_width="300dp"
+                   android:layout_height="50dp"
+                   android:layout_gravity="center_horizontal"
+                   android:backgroundTint="@color/lightblue"
+                   android:fontFamily="@font/marckscriptregular"
+                   android:text="@string/test_5"
+                   android:textColor="@color/darkblue"
+                   android:textSize="24sp"
+                   app:strokeColor="@color/white"
+                   app:strokeWidth="2dp" />
+
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="252dp"
+               android:layout_marginBottom="20dp"
+               android:background="@drawable/t_fon"
+               android:orientation="vertical"
+               android:padding="10dp">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="25dp"
+                   android:layout_gravity="center"
+                   android:layout_marginTop="10dp"
+                   android:layout_weight="1"
+                   android:fontFamily="@font/marckscriptregular"
+                   android:text="@string/test_6"
+                   android:textColor="@color/darkblue"
+                   android:textSize="30sp" />
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="0dp"
+                   android:layout_weight="2"
+                   android:fontFamily="@font/jejumyeongjoregular"
+                   android:justificationMode="inter_word"
+                   android:text="@string/test_7"
+                   android:textColor="@color/white"
+                   android:textSize="18sp" />
+
+               <com.google.android.material.button.MaterialButton
+                   android:id="@+id/btnTestStone"
+                   android:layout_width="300dp"
+                   android:layout_height="50dp"
+                   android:layout_gravity="center_horizontal"
+                   android:backgroundTint="@color/lightblue"
+                   android:fontFamily="@font/marckscriptregular"
+                   android:text="@string/test_5"
+                   android:textColor="@color/darkblue"
+                   android:textSize="24sp"
+                   app:strokeColor="@color/white"
+                   app:strokeWidth="2dp" />
+
+           </LinearLayout>
+       </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        style="@style/NoRippleBottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        app:itemBackground="@android:color/transparent"
+        app:itemIconSize="32dp"
+        app:itemIconTint="@color/nav_icon_selector"
+        app:itemTextColor="@color/nav_icon_selector"
+        app:menu="@menu/bottom_nav_menu" />
+
+</LinearLayout>

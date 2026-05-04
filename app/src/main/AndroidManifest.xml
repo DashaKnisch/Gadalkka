@@ -28,6 +28,7 @@
         <activity android:name=".ui.MatrixActivity" android:exported="false" />
         <activity android:name=".ui.tests.TestActivity" android:exported="false" />
         <activity android:name=".ui.tests.TestRunActivity" android:exported="false" />
+        <activity android:name=".ui.BallActivity" android:exported="false" />
         <activity
             android:name=".ui.entrance.ZastavkaActivity"
             android:exported="true">

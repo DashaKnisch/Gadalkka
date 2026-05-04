@@ -25,9 +25,16 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
  * Пользователь задаёт вопрос вслух, нажимает на шар,
  * и получает случайное предсказание из базы данных.
  *
+ * Архитектура: MVVM (Model-View-ViewModel)
+ *
+ * @author Soothsayer Team
+ * @version 1.0
  */
 public class BallActivity extends AppCompatActivity {
 
+    // ============================================
+    // UI ЭЛЕМЕНТЫ
+    // ============================================
 
     /** Текст предсказания, отображаемый пользователю */
     private TextView txtResult;
@@ -58,18 +65,26 @@ public class BallActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ball);
 
+        // Инициализация UI элементов
         init();
 
+        // Инициализация ViewModel
         vm = new ViewModelProvider(this).get(BallViewModel.class);
 
+        // Подписка на изменения предсказания в LiveData
+        // При получении нового предсказания обновляем TextView
         vm.prediction.observe(this, text -> {
             txtResult.setText(text);
         });
 
+        // Обработчик нажатия на кнопку магического шара
+        // При нажатии запрашиваем новое предсказание у ViewModel
         btnBall.setOnClickListener(v -> {
             vm.getPrediction();
         });
 
+        // Обработчик нажатия на иконку подсказки
+        // Показывает или скрывает текст с инструкцией
         btnInfo.setOnClickListener(v -> {
             if (txtTooltip.getVisibility() == View.GONE) {
                 txtTooltip.setVisibility(View.VISIBLE);
@@ -78,6 +93,7 @@ public class BallActivity extends AppCompatActivity {
             }
         });
 
+        // Настройка нижней навигации
         setupBottomNavigation();
     }
 
@@ -106,28 +122,31 @@ public class BallActivity extends AppCompatActivity {
      */
     private void setupBottomNavigation() {
 
+        // Отключаем групповую подсветку пунктов меню
         nav.getMenu().setGroupCheckable(0, true, false);
 
+        // Снимаем выделение со всех пунктов
         for (int i = 0; i < nav.getMenu().size(); i++) {
             nav.getMenu().getItem(i).setChecked(false);
         }
 
+        // Обработчик выбора пунктов меню
         nav.setOnItemSelectedListener(item -> {
 
             int id = item.getItemId();
 
             if (id == R.id.home) {
-                finish();
+                finish();  // Закрываем текущую активность и возвращаемся к главному экрану
                 return true;
             }
 
             if (id == R.id.library) {
-                finish();
+                finish();  // Закрываем текущую активность и переходим в библиотеку
                 return true;
             }
 
             if (id == R.id.profile) {
-                finish();
+                finish();  // Закрываем текущую активность и переходим в профиль
                 return true;
             }
 

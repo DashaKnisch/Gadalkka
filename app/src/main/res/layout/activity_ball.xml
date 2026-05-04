@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/f_bartop" />
+
+    <ScrollView
+        android:id="@+id/mainScroll"
+        android:layout_width="match_parent"
+        android:layout_height="731dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:fontFamily="@font/marckscriptregular"
+                    android:text="@string/ball_1"
+                    android:textColor="@color/darkblue"
+                    android:textSize="32sp" />
+
+                <ImageView
+                    android:id="@+id/btnInfo"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_info" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtTooltip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@drawable/bg_podskazka"
+                android:justificationMode="inter_word"
+                android:padding="10dp"
+                android:text="@string/ball_2"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/b_fon" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnBall"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginBottom="50dp"
+                    android:backgroundTint="@color/text"
+                    android:fontFamily="@font/marckscriptregular"
+                    android:text="@string/ball_3"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="2dp" />
+
+            </FrameLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgFon"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/b_text" />
+
+                <TextView
+                    android:id="@+id/txtResult"
+                    android:layout_width="235dp"
+                    android:layout_height="106dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="67dp"
+                    android:fontFamily="@font/jejumyeongjoregular"
+                    android:justificationMode="inter_word"
+                    android:text=""
+                    android:textColor="@color/text"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        style="@style/NoRippleBottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        app:itemIconTint="@color/nav_icon_selector"
+        app:itemTextColor="@color/nav_icon_selector"
+        app:menu="@menu/bottom_nav_menu" />
+
+</LinearLayout>

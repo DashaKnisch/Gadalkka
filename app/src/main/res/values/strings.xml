@@ -113,10 +113,13 @@
     <string name="test_6"> Какой твой камень? </string>
     <string name="test_7"> Пройдя этот тест, вы узнаете, какой природный камень станет вашим личным оберегом и талисманом. Откройте для себя то, что усилит ваши сильные стороны и принесёт удачу. </string>
 
-    <string name="w_1"> Какая ты ведьма? </string>
     <string name="w_2"> Вперед </string>
     <string name="w_3"> Назад </string>
     <string name="w_4"> Пройти ещё раз </string>
+
+    <string name="ball_1"> Шар предсказаний </string>
+    <string name="ball_2"> Шёпотом задай свой вопрос, а магический шар откроет тайну. </string>
+    <string name="ball_3"> Спросить у шара </string>
 
     <string name="app_name">Soothsayer</string>
     <string name="logo1">Sooth</string>

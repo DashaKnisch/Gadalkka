@@ -1,8 +1,10 @@
 package com.dkkk.soothsayer.repository;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.dkkk.soothsayer.data.UserDBHelper;
 
@@ -19,17 +21,25 @@ import java.security.NoSuchAlgorithmException;
  * - хранение текущей сессии пользователя (SharedPreferences)
  *
  * Является связующим слоем между UI и базой данных пользователей.
+ *
  */
 public class UserRepository {
 
-    /** Хелпер для работы с таблицей пользователей */
+    /**
+     * Хелпер для работы с таблицей пользователей.
+     * Обеспечивает доступ к базе данных users.db.
+     */
     private final UserDBHelper userDbHelper;
 
-    /** Локальное хранилище для сохранения авторизованного пользователя */
+    /**
+     * Локальное хранилище для сохранения авторизованного пользователя.
+     * Используется для запоминания сессии между запусками приложения.
+     */
     private final SharedPreferences sharedPreferences;
 
     /**
      * Конструктор репозитория пользователей.
+     * Инициализирует доступ к базе данных и локальному хранилищу.
      *
      * @param context контекст приложения для доступа к БД и SharedPreferences
      */
@@ -104,6 +114,7 @@ public class UserRepository {
      * Хэширует пароль с использованием SHA-256.
      *
      * Используется для безопасного хранения паролей в базе данных.
+     * Преобразует строку пароля в 64-символьную hex-строку хэша.
      *
      * @param password исходный пароль
      * @return SHA-256 хэш пароля в виде hex-строки
@@ -132,6 +143,7 @@ public class UserRepository {
      * Сохраняет логин текущего пользователя в локальное хранилище.
      *
      * Используется для "запоминания" авторизованного пользователя.
+     * Данные сохраняются после успешного входа.
      *
      * @param login логин пользователя
      */
@@ -154,8 +166,64 @@ public class UserRepository {
      * Выполняет выход пользователя из системы.
      *
      * Очищает локальные данные авторизации.
+     * При следующем запуске приложения пользователь не будет авторизован.
      */
     public void logout() {
         sharedPreferences.edit().clear().apply();
+    }
+
+    /**
+     * Возвращает курсор с данными текущего авторизованного пользователя.
+     *
+     * @return Cursor с данными пользователя или пустой курсор
+     */
+    public Cursor getCurrentUser() {
+        String login = getUsername();
+        return userDbHelper.getUserByLogin(login);
+    }
+
+    /**
+     * Обновляет данные сессии пользователя в SharedPreferences.
+     *
+     * @param username новое имя пользователя для сохранения в сессии
+     */
+    public void updateSession(String username) {
+        sharedPreferences.edit().putString("username", username).apply();
+    }
+
+    /**
+     * Безопасно обновляет данные пользователя с проверкой уникальности имени.
+     * Проверяет, что новое имя пользователя не занято другим пользователем.
+     *
+     * @param username новое имя пользователя
+     * @param email новый email
+     * @param zodiac новый знак зодиака
+     * @return true если обновление успешно, false если имя уже занято
+     */
+    public boolean updateUserSafe(String username, String email, String zodiac) {
+
+        SQLiteDatabase db = userDbHelper.getWritableDatabase();
+
+        String currentUser = getUsername();
+
+        Cursor c = db.rawQuery(
+                "SELECT * FROM users WHERE username=? AND username!=?",
+                new String[]{username, currentUser}
+        );
+
+        if (c.moveToFirst()) {
+            c.close();
+            return false;
+        }
+        c.close();
+
+        ContentValues cv = new ContentValues();
+        cv.put("username", username);
+        cv.put("email", email);
+        cv.put("zodiac", zodiac);
+
+        db.update("users", cv, "username=?", new String[]{currentUser});
+
+        return true;
     }
 }

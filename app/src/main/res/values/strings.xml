@@ -122,25 +122,25 @@
     <string name="ball_3"> Спросить у шара </string>
 
     <string name="comp_1"> Совместимость </string>
-    <string name="comp_2">  Милашка, хочешь проверить свою совместимость? Выбери свою дату рождения и дату рождения партнера, тогда узнаешь всю правду о вашем союзе... </string>
+    <string name="comp_2"> Милашка, хочешь проверить свою совместимость? Выбери свою дату рождения и дату рождения партнера, тогда узнаешь всю правду о вашем союзе... </string>
     <string name="comp_3"> Выбери свою дату рождения: </string>
     <string name="comp_4"> Выбери дату рождения партнера: </string>
     <string name="comp_5"> Ваша совместимость: </string>
     <string name="comp_6"> Рассчитать </string>
 
-    <string name="app_name">Soothsayer</string>
-    <string name="logo1">Sooth</string>
-    <string name="logo2">sayer</string>
-    <string name="rasklad">Расклад на картах Таро</string>
-    <string name="yyy">Гороскоп</string>
-    <string name="log">Введите ваш знак зодиака:</string>
-    <string name="main_btn">Показать результат</string>
-    <string name="taro_description">Описание изображения Таро</string>
-    <string name="goroscope_description">Описание изображения Гороскопа</string>
-    <string name="matrix_description">Описание изображения Матрицы</string>
-    <string name="situation">Расклад на ситуацию</string>
-    <string name="day">Карта дня</string>
-    <string name="no_user_input">Пожалуйста, введите свой знак зодиака</string>
+    <string name="prof_1"> Мой профиль </string>
+    <string name="prof_2"> Логин </string>
+    <string name="prof_3"> Почта </string>
+    <string name="prof_4"> Знак зодиака </string>
+    <string name="prof_btn_1"> Редактировать профиль </string>
+    <string name="prof_btn_2"> Сменить язык (ru/en) </string>
+    <string name="prof_btn_3"> Избранное </string>
+    <string name="prof_btn_4"> О приложении </string>
+    <string name="prof_btn_5"> Выйти из аккаунта </string>
+    <string name="prof_6">    Приложение «Гадалка» создано для всех, кто интересуется магией, мистикой и саморазвитием. Оно позволяет получать предсказания и гадания на разные темы, проходить эзотерические тесты и выполнять магические расчёты, а также изучать статьи из нашей библиотеки*.
+ *Статьи, размещённые в приложении, публикуются с разрешения правообладателей и основаны на оригинальных источниках. Мы уважаем авторские права и соблюдаем условия их использования.
+ Приложение разработано с использованием современных технологий для мобильных устройств, обеспечивая удобный интерфейс, безопасную работу с данными и возможность офлайн-доступа к ключевым функциям. «Гадалка» помогает пользователям развивать интуицию, получать вдохновение и расширять свои знания о мистических практиках, сочетая обучение с увлекательным взаимодействием и персонализированными предсказаниями </string>
+    <string name="prof_5"> © 2026 VKKL. Все права защищены </string>
 
-
+    <string name="app_name"> Soothsayer </string>
 </resources>

@@ -77,7 +77,6 @@ public class HomeActivity extends AppCompatActivity {
         btnTest = findViewById(R.id.buttonTest);
         btnBall = findViewById(R.id.buttonBall);
         btnCompatibility = findViewById(R.id.buttonCompatibility);
-        btnSolar = findViewById(R.id.buttonSolar);
 
         nav = findViewById(R.id.bottom_navigation);
     }
@@ -106,9 +105,6 @@ public class HomeActivity extends AppCompatActivity {
 
         btnCompatibility.setOnClickListener(v ->
                 startActivity(new Intent(this, CompatibilityActivity.class)));
-
-        btnSolar.setOnClickListener(v ->
-                startActivity(new Intent(this, SolarActivity.class)));
     }
 
     /**

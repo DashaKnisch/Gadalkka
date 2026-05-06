@@ -29,6 +29,7 @@
         <activity android:name=".ui.tests.TestActivity" android:exported="false" />
         <activity android:name=".ui.tests.TestRunActivity" android:exported="false" />
         <activity android:name=".ui.BallActivity" android:exported="false" />
+        <activity android:name=".ui.CompatibilityActivity" android:exported="false" />
         <activity
             android:name=".ui.entrance.ZastavkaActivity"
             android:exported="true">

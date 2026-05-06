@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/f_bartop" />
+
+    <ScrollView
+        android:id="@+id/mainScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/marckscriptregular"
+                android:gravity="center"
+                android:text="@string/comp_1"
+                android:textColor="@color/darkblue"
+                android:textSize="32sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/testText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/com_fon" />
+
+                <TextView
+                    android:layout_width="257dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/jejumyeongjoregular"
+                    android:justificationMode="inter_word"
+                    android:text="@string/comp_2"
+                    android:textColor="@color/text"
+                    android:textSize="18sp" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@color/fon"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:fontFamily="@font/marckscriptregular"
+                    android:text="@string/comp_3"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <Spinner
+                        android:id="@+id/spinnerDay"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_matrix_spin" />
+
+                    <Spinner
+                        android:id="@+id/spinnerMonth"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_matrix_spin" />
+
+                    <Spinner
+                        android:id="@+id/spinnerYear"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_matrix_spin" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:fontFamily="@font/marckscriptregular"
+                    android:text="@string/comp_4"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <Spinner
+                        android:id="@+id/spinnerDayP"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_matrix_spin" />
+
+                    <Spinner
+                        android:id="@+id/spinnerMonthP"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_matrix_spin" />
+
+                    <Spinner
+                        android:id="@+id/spinnerYearP"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_matrix_spin" />
+
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCompatibility"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:backgroundTint="@color/text"
+                    android:fontFamily="@font/marckscriptregular"
+                    android:text="@string/comp_6"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="2dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="316dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/marckscriptregular"
+                    android:gravity="center"
+                    android:text="@string/comp_5"
+                    android:textColor="@color/text"
+                    android:textSize="26sp" />
+
+                <TextView
+                    android:id="@+id/procent"
+                    android:layout_width="62dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/marckscriptregular"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/text"
+                    android:textSize="26sp" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/com_text" />
+
+                <TextView
+                    android:id="@+id/txtCom"
+                    android:layout_width="263dp"
+                    android:layout_height="132dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/jejumyeongjoregular"
+                    android:justificationMode="inter_word"
+                    android:text=""
+                    android:textColor="@color/text"
+                    android:textSize="18sp" />
+            </FrameLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        style="@style/NoRippleBottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        app:itemBackground="@android:color/transparent"
+        app:itemIconSize="32dp"
+        app:itemIconTint="@color/nav_icon_selector"
+        app:itemTextColor="@color/nav_icon_selector"
+        app:menu="@menu/bottom_nav_menu" />
+
+</LinearLayout>
